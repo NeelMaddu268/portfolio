@@ -18,9 +18,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="text-center py-20 px-6">
-        <h2 className="text-4xl font-extrabold mb-4">Hi, I'm Neel</h2>
+        <h2 className="text-4xl font-extrabold mb-4">Hi, I&apos;m Neel</h2>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-          I build cool AI stuff. Here's a showcase of my projects using modern AI and machine learning tools.
+          I build cool AI stuff. Here&apos;s a showcase of my projects using modern AI and machine learning tools.
         </p>
       </section>
 
