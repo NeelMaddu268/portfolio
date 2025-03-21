@@ -49,7 +49,7 @@ export default function Home() {
           </p>
           <p className="mb-2"><strong>Tech Stack:</strong> Python, OpenCV, MediaPipe, Scikit-learn, Streamlit</p>
           <div className="flex gap-4 mt-4">
-            <a href="https://github.com/YourGitHubUsername/sign-lang-interpreter" target="_blank" className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900 transition">💻 GitHub Code</a>
+            <a href="https://github.com/NeelMaddu268/ASL-Interpreter" target="_blank" className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900 transition">💻 GitHub Code</a>
           </div>
         </div>
 
