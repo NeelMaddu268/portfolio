@@ -10,7 +10,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 text-gray-800 font-sans">
       {/* Navbar */}
       <header className="bg-white shadow sticky top-0 z-10 px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">🧠 Neel's AI Portfolio</h1>
+        <h1 className="text-2xl font-bold">🧠 Neel&apos;s AI Portfolio</h1>
         <nav>
           <a href="#projects" className="text-blue-600 hover:underline">Projects</a>
         </nav>
