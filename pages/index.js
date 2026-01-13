@@ -36,7 +36,7 @@ export default function Home() {
           </p>
           <p className="mb-2"><strong>Tech Stack:</strong> Python, PyTorch, CLIP, FAISS, Streamlit</p>
           <div className="flex gap-4 mt-4">
-            <a href="https://multimodal-ai-search.streamlit.app/" target="_blank" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">🔗 Live Demo</a>
+            <a href="https://huggingface.co/spaces/NM268/Multimodal-ai-search/" target="_blank" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">🔗 Live Demo</a>
             <a href="https://github.com/NeelMaddu268/multimodal-ai-search" target="_blank" className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900 transition">💻 GitHub Code</a>
           </div>
         </div>
