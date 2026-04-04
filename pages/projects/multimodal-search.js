@@ -35,7 +35,7 @@ export default function MultimodalSearch() {
 
         <h2>Architecture & Implementation</h2>
         <p>
-          I designed a <strong>Multimodal Search Engine</strong> utilizing OpenAI's CLIP (Contrastive Language-Image Pretraining) model to encode both text queries and visual assets into the exact same semantic vector space. 
+          I designed a <strong>Multimodal Search Engine</strong> utilizing OpenAI&apos;s CLIP (Contrastive Language-Image Pretraining) model to encode both text queries and visual assets into the exact same semantic vector space. 
         </p>
         
         <ul className="feature-list">

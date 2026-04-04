@@ -35,7 +35,7 @@ export default function ASLInterpreter() {
 
         <h2>Pipeline & Technologies</h2>
         <p>
-          Instead of just sending entire images into a bulky Convolutional Neural Network, the pipeline utilizes <strong>Google's MediaPipe</strong> framework. MediaPipe extracts precise structural geometry (21 3D landmarks) from the hand skeleton. 
+          Instead of just sending entire images into a bulky Convolutional Neural Network, the pipeline utilizes <strong>Google&apos;s MediaPipe</strong> framework. MediaPipe extracts precise structural geometry (21 3D landmarks) from the hand skeleton. 
         </p>
         <p>
           These coordinate vectors are serialized and fed into a custom <strong>scikit-learn</strong> classifier pipeline. This significantly increases frame rates and inference speeds since the mathematical payload is drastically reduced compared to pixel-inference arrays.
@@ -45,7 +45,7 @@ export default function ASLInterpreter() {
           <li><strong>Real-Time Tracking:</strong> Leverages OpenCV to capture streaming data and layer visual UI elements denoting the skeletal tracking grid.</li>
           <li><strong>High Accuracy Classifier:</strong> Achieved a sustained 95% classification accuracy across the dataset matrix on gestures captured from variable lighting conditions.</li>
           <li><strong>Text-to-Speech Engine:</strong> Actively converts new and distinct sequential predictions into audible speech automatically, mimicking natural spoken word translation.</li>
-          <li><strong>UX Optimization:</strong> Integrated a "None" class and a mute toggle to prevent audio spamming when the user's gestures are transient or unclear between distinct letters.</li>
+          <li><strong>UX Optimization:</strong> Integrated a &quot;None&quot; class and a mute toggle to prevent audio spamming when the user&apos;s gestures are transient or unclear between distinct letters.</li>
         </ul>
 
         <div style={{ marginTop: '4rem', display: 'flex', gap: '1rem' }}>

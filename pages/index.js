@@ -88,14 +88,14 @@ export default function Home() {
           <div className="hero-text">
             <div className="animate-fade-in delay-100" style={{ marginBottom: '1.5rem' }}>
               <span style={{ display: 'inline-block', padding: '0.4rem 1rem', background: 'rgba(6, 182, 212, 0.1)', color: 'var(--accent-cyan)', borderRadius: '99px', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase', fontSize: '0.8rem', border: '1px solid rgba(6, 182, 212, 0.2)' }}>
-                Georgia Tech CS '27
+                Georgia Tech CS &apos;27
               </span>
             </div>
             <h1 className="animate-fade-in delay-200 text-gradient" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', marginBottom: '1rem', lineHeight: 1.1 }}>
               Building Intelligent Systems.
             </h1>
             <p className="animate-fade-in delay-300" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.25rem)', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.8 }}>
-              Hey, I'm Neel. I'm a software engineer and computer science student deeply fascinated with applied Artificial Intelligence and iOS Development. I focus on deploying massive embedding spaces into seamless user experiences.
+              Hey, I&apos;m Neel. I&apos;m a software engineer and computer science student deeply fascinated with applied Artificial Intelligence and iOS Development. I focus on deploying massive embedding spaces into seamless user experiences.
             </p>
             <div className="animate-fade-in delay-300" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               <a href="#projects" className="btn-primary">View Portfolio →</a>
@@ -115,13 +115,13 @@ export default function Home() {
         <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Behind the Code</h2>
         <div className="glass-panel" style={{ padding: '2.5rem' }}>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginBottom: '1.5rem', lineHeight: '1.8' }}>
-            My engineering philosophy stems from the idea that <strong style={{ color: 'var(--text-main)' }}>algorithms are only as good as the interfaces that present them</strong>. It's why I've dedicated myself to understanding the full pipeline—from crafting underlying embedding models with PyTorch, down to building reactive views with SwiftUI. Currently a third-year undergrad at the Georgia Institute of Technology, my focus is turning academic AI theory into tangible products.
+            My engineering philosophy stems from the idea that <strong style={{ color: 'var(--text-main)' }}>algorithms are only as good as the interfaces that present them</strong>. It&apos;s why I&apos;ve dedicated myself to understanding the full pipeline—from crafting underlying embedding models with PyTorch, down to building reactive views with SwiftUI. Currently a third-year undergrad at the Georgia Institute of Technology, my focus is turning academic AI theory into tangible products.
           </p>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginBottom: '1.5rem', lineHeight: '1.8' }}>
-            When I'm not configuring a FAISS vector database or debating the latest Apple frameworks inside the GT iOS Club, you will likely find me staying active at the gym, tinkering with new Apple Silicon hardware capabilities, or finding ways to inject machine learning into everyday inefficiencies.
+            When I&apos;m not configuring a FAISS vector database or debating the latest Apple frameworks inside the GT iOS Club, you will likely find me staying active at the gym, tinkering with new Apple Silicon hardware capabilities, or finding ways to inject machine learning into everyday inefficiencies.
           </p>
           <p style={{ color: 'var(--accent-cyan)', fontStyle: 'italic', fontSize: '1.05rem', marginTop: '1rem' }}>
-            "Good code solves the math. Great engineering solves the user's problem."
+            &quot;Good code solves the math. Great engineering solves the user&apos;s problem.&quot;
           </p>
         </div>
       </section>
