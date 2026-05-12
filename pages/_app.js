@@ -1,12 +1,19 @@
 import "@/styles/globals.css";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
     <>
+      <motion.div className="scroll-progress" style={{ scaleX }} />
       <div className="bg-orb-1"></div>
       <div className="bg-orb-2"></div>
       <AnimatePresence mode="wait">

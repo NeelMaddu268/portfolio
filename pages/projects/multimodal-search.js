@@ -7,9 +7,9 @@ export default function MultimodalSearch() {
       <Head>
         <title>Multimodal AI Search | Neel Maddu</title>
       </Head>
-      
+
       <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="container project-nav-row">
           <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
           <div style={{ fontWeight: 800 }}>NM.</div>
         </div>
@@ -23,21 +23,21 @@ export default function MultimodalSearch() {
           <span className="tech-badge">FAISS</span>
         </div>
 
-        <h1 className="text-gradient" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Multimodal AI: Semantic Image Search</h1>
-        <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '3rem' }}>
+        <h1 className="text-gradient">Multimodal AI: Semantic Image Search</h1>
+        <p>
           Bridging the gap between natural language prompts and massive visual datasets.
         </p>
 
         <h2>The Problem</h2>
         <p>
-          Traditional image search relies heavily on pre-computed metadata and manual tagging. This approach completely fails when users want to search for highly descriptive or abstract concepts. 
+          Traditional image search relies heavily on pre-computed metadata and manual tagging. This approach completely fails when users want to search for highly descriptive or abstract concepts.
         </p>
 
         <h2>Architecture & Implementation</h2>
         <p>
-          I designed a <strong>Multimodal Search Engine</strong> utilizing OpenAI&apos;s CLIP (Contrastive Language-Image Pretraining) model to encode both text queries and visual assets into the exact same semantic vector space. 
+          I designed a <strong>Multimodal Search Engine</strong> utilizing OpenAI&apos;s CLIP (Contrastive Language-Image Pretraining) model to encode both text queries and visual assets into the exact same semantic vector space.
         </p>
-        
+
         <ul className="feature-list">
           <li><strong>Data Ingestion:</strong> Over 10,000 images processed through a PyTorch data pipeline.</li>
           <li><strong>Vector Storage:</strong> Utilized FAISS (Facebook AI Similarity Search) to index the high-dimensional embeddings for extremely rapid nearest-neighbor lookup.</li>

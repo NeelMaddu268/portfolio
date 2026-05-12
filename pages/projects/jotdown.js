@@ -7,9 +7,9 @@ export default function JotDown() {
       <Head>
         <title>JotDown | Neel Maddu</title>
       </Head>
-      
+
       <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="container project-nav-row">
           <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
           <div style={{ fontWeight: 800 }}>NM.</div>
         </div>
@@ -23,8 +23,8 @@ export default function JotDown() {
           <span className="tech-badge">NLP</span>
         </div>
 
-        <h1 className="text-gradient" style={{ fontSize: '3rem', marginBottom: '1rem' }}>JotDown</h1>
-        <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '3rem' }}>
+        <h1 className="text-gradient">JotDown</h1>
+        <p>
           An iOS platform blending hyper-minimalist note-taking with on-device semantic awareness.
         </p>
 
@@ -32,7 +32,7 @@ export default function JotDown() {
         <p>
           I architected the application utilizing <strong>SwiftUI</strong> and strict <strong>MVVM (Model-View-ViewModel)</strong> design patterns. The goal was to build a UI that had absolutely zero friction for data entry while hiding an immensely powerful structural engine beneath the surface.
         </p>
-        
+
         <h2>Core ML & NLP Integration</h2>
         <p>
           Most applications send text data to cloud providers to parse sentiment or tags. JotDown instead processes entirely on-device using Apple&apos;s <strong>Core ML</strong> framework to perform Natural Language Processing.

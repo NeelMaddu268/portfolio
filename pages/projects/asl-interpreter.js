@@ -7,9 +7,9 @@ export default function ASLInterpreter() {
       <Head>
         <title>Real-Time ASL Interpreter | Neel Maddu</title>
       </Head>
-      
+
       <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="container project-nav-row">
           <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
           <div style={{ fontWeight: 800 }}>NM.</div>
         </div>
@@ -23,8 +23,8 @@ export default function ASLInterpreter() {
           <span className="tech-badge">Scikit-learn</span>
         </div>
 
-        <h1 className="text-gradient" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Real-Time ASL Interpreter</h1>
-        <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '3rem' }}>
+        <h1 className="text-gradient">Real-Time ASL Interpreter</h1>
+        <p>
           Computer vision pipeline bridging the communication gap.
         </p>
 
@@ -35,12 +35,12 @@ export default function ASLInterpreter() {
 
         <h2>Pipeline & Technologies</h2>
         <p>
-          Instead of just sending entire images into a bulky Convolutional Neural Network, the pipeline utilizes <strong>Google&apos;s MediaPipe</strong> framework. MediaPipe extracts precise structural geometry (21 3D landmarks) from the hand skeleton. 
+          Instead of just sending entire images into a bulky Convolutional Neural Network, the pipeline utilizes <strong>Google&apos;s MediaPipe</strong> framework. MediaPipe extracts precise structural geometry (21 3D landmarks) from the hand skeleton.
         </p>
         <p>
           These coordinate vectors are serialized and fed into a custom <strong>scikit-learn</strong> classifier pipeline. This significantly increases frame rates and inference speeds since the mathematical payload is drastically reduced compared to pixel-inference arrays.
         </p>
-        
+
         <ul className="feature-list">
           <li><strong>Real-Time Tracking:</strong> Leverages OpenCV to capture streaming data and layer visual UI elements denoting the skeletal tracking grid.</li>
           <li><strong>High Accuracy Classifier:</strong> Achieved a sustained 95% classification accuracy across the dataset matrix on gestures captured from variable lighting conditions.</li>
