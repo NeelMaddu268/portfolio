@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const itemVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -9,7 +10,7 @@ const itemVariants = {
   }
 };
 
-export default function ExperienceItem({ role, company, location, date, descriptionPoints }) {
+export default function ExperienceItem({ role, company, location, date, descriptionPoints, detailHref }) {
   return (
     <motion.div
       className="glass-panel"
@@ -32,6 +33,13 @@ export default function ExperienceItem({ role, company, location, date, descript
           <li key={i} style={{ marginBottom: '0.5rem' }}>{point}</li>
         ))}
       </ul>
+      {detailHref && (
+        <div style={{ marginTop: '1.5rem' }}>
+          <Link href={detailHref} className="btn-secondary">
+            Read Full Experience
+          </Link>
+        </div>
+      )}
     </motion.div>
   );
 }

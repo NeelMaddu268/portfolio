@@ -12,8 +12,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "next": "15.2.8",
-    "framer-motion": "latest",
-    "lucide-react": "latest"
+    "framer-motion": "12.38.0",
+    "lucide-react": "1.14.0"
   },
   "devDependencies": {
     "eslint": "^9",

@@ -424,6 +424,29 @@ a {
   gap: 1.5rem;
 }
 
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+}
+
+.education-card {
+  max-width: 760px;
+}
+
+.resume-preview-wrap {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.resume-preview {
+  width: 100%;
+  min-height: 800px;
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.4);
+}
+
 .page-section-title {
   font-size: clamp(1.85rem, 4vw + 0.5rem, 2.5rem);
   line-height: 1.2;
@@ -628,6 +651,10 @@ a {
   .article-container {
     padding: 2.5rem 1rem;
     font-size: 1rem;
+  }
+
+  .resume-preview {
+    min-height: 560px;
   }
 
   .article-container h2 {

@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import ProjectCard from '@/components/ProjectCard';
 import ExperienceItem from '@/components/ExperienceItem';
@@ -47,26 +48,39 @@ const projects = [
 
 const experience = [
   {
+    role: 'Software Engineer Intern, CIPHER Lab - Threat Analysis Branch',
+    company: 'Georgia Tech Research Institute (GTRI)',
+    location: 'Atlanta, GA',
+    date: 'May 2026 - Present',
+    experienceSlug: 'gtri-cipher-lab',
+    descriptionPoints: [
+      'Developing ML R&D solutions and graph analytics pipelines supporting cybersecurity and intelligence analysis workflows.',
+      'Applying NLP techniques to analyze large-scale unstructured data in a national security context.',
+      'Contributing to a graph analytics dashboard platform using vertex/edge graph structures in close collaboration with the research team.'
+    ]
+  },
+  {
+    role: 'Automated Algorithm Design - AlphaEvolve Subteam',
+    company: 'Georgia Institute of Technology VIP Program',
+    location: 'Atlanta, GA',
+    date: 'Jan 2026 - Present',
+    experienceSlug: 'vip-alphaevolve',
+    descriptionPoints: [
+      'Contributing to a GTRI-sponsored research program building a multi-objective genetic programming framework that evolves hybrid algorithms from data.',
+      'Extending the LLM-Guided Evolution (LLM-GE) framework to automate proposal, mutation, and evaluation loops for generated code.',
+      'Running reproducible experiments on Georgia Tech PACE ICE HPC infrastructure for neural architecture search and benchmarking.'
+    ]
+  },
+  {
     role: 'Senior iOS Developer',
     company: 'Georgia Tech iOS Club',
     location: 'Atlanta, GA',
     date: 'Jan 2026 - Present',
+    experienceSlug: 'gt-ios-club',
     descriptionPoints: [
-      'Selected as a Senior Developer to lead development of iOS applications in a competitive, project-based club environment.',
-      'Collaborate with designers and developers to architect SwiftUI features using MVVM.',
-      'Review pull requests, provide technical feedback, and mentor junior developers.',
-      'Contribute to production-level iOS codebases following Git/GitHub best practices.'
-    ]
-  },
-  {
-    role: 'Salesperson',
-    company: 'Waffle House',
-    location: 'Cumming, GA',
-    date: 'May 2024 - Feb 2025',
-    descriptionPoints: [
-      'Delivered customer service in a high-volume, fast-paced environment while ensuring order accuracy and satisfaction.',
-      'Managed point-of-sale transactions and balanced cash/tips with strong attention to detail.',
-      'Collaborated with team members to maintain efficiency and resolve issues quickly during peak hours.'
+      'Led a team of 8 developers building iOS apps with Swift, Core ML, and Firebase across 3 club projects used by 150+ members.',
+      'Collaborated with designers and engineers to architect SwiftUI features using MVVM, reducing onboarding drop-off by 30%.',
+      'Reviewed 40+ pull requests, mentored 4 junior developers, and helped reduce bug rates while improving delivery speed.'
     ]
   }
 ];
@@ -76,9 +90,16 @@ const skills = {
   "Data": "pandas, NumPy",
   "iOS Development": "Swift, SwiftUI, Core ML, MVVM",
   "Backend & Databases": "SQL, MySQL, MongoDB, Firebase, Node.js",
-  "Programming Languages": "Python, Java, C, JavaScript",
-  "Tools": "Git, GitHub"
+  "Programming Languages": "Python, Java, C, C++, JavaScript, Next.js, React",
+  "Tools": "Git, GitHub, CI/CD, Jenkins, GitHub Actions, Docker, CMake",
+  "Cloud": "AWS, Azure"
 };
+
+const summaryHighlights = [
+  'Incoming Software Engineer Intern at GTRI CIPHER Lab focused on ML systems for cybersecurity and intelligence analysis.',
+  'Built and deployed AI-powered products including a multimodal image search engine over 10,000+ assets.',
+  'Led iOS product development with SwiftUI and Core ML, combining research-grade models with production UX.'
+];
 
 export default function Home() {
   return (
@@ -95,7 +116,9 @@ export default function Home() {
             <a href="#">NM.</a>
           </div>
           <div className="nav-links">
+            <a href="#summary">Summary</a>
             <a href="#about">About</a>
+            <a href="#education">Education</a>
             <a href="#projects">Projects</a>
             <a href="#experience">Experience</a>
             <a href="#resume" className="text-gradient">Resume</a>
@@ -128,7 +151,7 @@ export default function Home() {
               variants={fadeUp}
               style={{ fontSize: 'clamp(1.1rem, 2vw, 1.25rem)', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.8 }}
             >
-              Hey, I&apos;m Neel. I&apos;m a software engineer and computer science student deeply fascinated with applied Artificial Intelligence and iOS Development. I focus on deploying massive embedding spaces into seamless user experiences.
+              Hey, I&apos;m Neel. I&apos;m a software engineer and Georgia Tech CS student focused on applied AI and iOS. I&apos;m currently building ML and graph analytics systems at GTRI&apos;s CIPHER Lab and shipping production-level SwiftUI apps with Core ML.
             </motion.p>
             <motion.div variants={fadeUp} style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               <a href="#projects" className="btn-primary">View Portfolio →</a>
@@ -143,11 +166,40 @@ export default function Home() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
           >
             <div className="avatar-wrapper">
-              <img src="/headshot.jpg" alt="Neel Maddu Headshot" className="avatar-image" />
+              <Image
+                src="/headshot.jpg"
+                alt="Neel Maddu Headshot"
+                className="avatar-image"
+                width={700}
+                height={933}
+                priority
+                sizes="(max-width: 640px) 280px, (max-width: 1200px) 40vw, 350px"
+              />
             </div>
           </motion.div>
         </div>
       </section>
+
+      <motion.section
+        id="summary"
+        className="section container"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+        variants={staggerContainer}
+      >
+        <motion.h2 variants={fadeUp} className="page-section-title" style={{ marginBottom: '1rem' }}>Summary</motion.h2>
+        <motion.p variants={fadeUp} style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
+          I build practical AI and iOS systems that translate research into products people can use every day.
+        </motion.p>
+        <motion.div className="summary-grid" variants={staggerContainer}>
+          {summaryHighlights.map((highlight) => (
+            <motion.div key={highlight} className="glass-panel" style={{ padding: '1.5rem' }} variants={fadeUp}>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.8 }}>{highlight}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.section>
 
       {/* About Section — scroll triggered */}
       <motion.section
@@ -172,6 +224,22 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
+      <motion.section
+        id="education"
+        className="section container"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+        variants={staggerContainer}
+      >
+        <motion.h2 variants={fadeUp} className="page-section-title" style={{ marginBottom: '2rem' }}>Education</motion.h2>
+        <motion.div variants={fadeUp} className="glass-panel education-card" style={{ padding: '2rem' }}>
+          <h3 style={{ marginBottom: '0.5rem' }}>Georgia Institute of Technology</h3>
+          <p style={{ color: 'var(--accent-blue)', marginBottom: '0.5rem' }}>Bachelor of Science in Computer Science</p>
+          <p style={{ color: 'var(--text-muted)' }}>Atlanta, GA · GPA: 4.0 · Expected May 2027</p>
+        </motion.div>
+      </motion.section>
+
       {/* Projects Section — staggered grid */}
       <motion.section
         id="projects"
@@ -185,8 +253,8 @@ export default function Home() {
         <motion.p variants={fadeUp} style={{ color: 'var(--text-muted)', marginBottom: '3rem' }}>Select a project below to read an in-depth case study of the architecture and implementation.</motion.p>
 
         <motion.div className="projects-grid" variants={staggerContainer}>
-          {projects.map((proj, idx) => (
-            <ProjectCard key={idx} {...proj} />
+          {projects.map((proj) => (
+            <ProjectCard key={proj.projectSlug} {...proj} />
           ))}
         </motion.div>
       </motion.section>
@@ -202,8 +270,12 @@ export default function Home() {
       >
         <motion.h2 variants={fadeUp} className="page-section-title" style={{ marginBottom: '3rem' }}>Experience</motion.h2>
         <motion.div variants={staggerContainer} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {experience.map((exp, idx) => (
-            <ExperienceItem key={idx} {...exp} />
+          {experience.map((exp) => (
+            <ExperienceItem
+              key={`${exp.company}-${exp.role}`}
+              {...exp}
+              detailHref={`/experience/${exp.experienceSlug}`}
+            />
           ))}
         </motion.div>
       </motion.section>
@@ -249,9 +321,16 @@ export default function Home() {
           A comprehensive overview of my education, experience, projects, and technical skills—available to view and download.
         </motion.p>
         <motion.div variants={fadeUp}>
-          <a href="/Neel's%20Main%20Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
+          <a href="/Neel's%20Main%20Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ fontSize: '1.1rem', padding: '1rem 2rem', marginBottom: '2rem' }}>
             ↓ Download PDF Resume
           </a>
+        </motion.div>
+        <motion.div variants={fadeUp} className="resume-preview-wrap">
+          <iframe
+            src="/Neel's%20Main%20Resume.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH"
+            title="Neel Maddu Resume Preview"
+            className="resume-preview"
+          />
         </motion.div>
       </motion.section>
 
