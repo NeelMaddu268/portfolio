@@ -27,6 +27,18 @@ const heroStagger = {
 // --- Data ---
 const projects = [
   {
+    title: 'MARTA Live Transit Tracker',
+    description: "A full-stack live transit tracker: a 24/7 FastAPI/SQLite backend polling MARTA's GTFS-Realtime feeds (575K+ arrival observations across 78 routes and 6,200+ stops), feeding a native SwiftUI app tracking ~200 live vehicles at a 15-second refresh.",
+    techStack: ['Python', 'FastAPI', 'SwiftUI', 'SQLite', 'GTFS-Realtime'],
+    projectSlug: 'marta-transit-tracker'
+  },
+  {
+    title: 'LLM Red-Teaming Evaluation Pipeline',
+    description: 'An extensible prompt-injection evaluation framework testing local and frontier LLMs across 46 payloads and 41 techniques, with a dual rule-based + LLM-as-judge scoring pipeline that quantified up to a 47% robustness gap on local 8B models.',
+    techStack: ['Python', 'Streamlit', 'Ollama', 'Anthropic API', 'pytest'],
+    projectSlug: 'llm-red-teaming'
+  },
+  {
     title: 'Multimodal AI Search Engine',
     description: 'A visual search engine indexing over 10,000 images using CLIP embeddings and FAISS, enabling retrieval from natural language prompts in under 2 seconds.',
     techStack: ['Python', 'PyTorch', 'CLIP', 'FAISS', 'Streamlit'],
