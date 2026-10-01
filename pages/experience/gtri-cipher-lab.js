@@ -17,9 +17,9 @@ export default function GTRICipherLab() {
 
       <main className="article-container animate-fade-in delay-100">
         <div style={{ marginBottom: '2rem' }}>
-          <span className="tech-badge">ML R&D</span>
           <span className="tech-badge">NLP</span>
-          <span className="tech-badge">Graph Analytics</span>
+          <span className="tech-badge">LLM Security</span>
+          <span className="tech-badge">Agentic Systems</span>
           <span className="tech-badge">Cybersecurity</span>
         </div>
 
@@ -30,15 +30,14 @@ export default function GTRICipherLab() {
 
         <h2>Role Scope</h2>
         <p>
-          At GTRI&apos;s CIPHER Lab, I work on machine learning and graph analytics solutions used in cybersecurity and intelligence analysis workflows. My focus is on building practical systems that can process noisy, large-scale data and deliver analyst-ready insights.
+          At GTRI&apos;s CIPHER Lab, I work on two things: turning large volumes of unstructured text into structured signals analysts can use, and testing how LLM-enabled and agentic systems hold up against adversarial attacks.
         </p>
 
         <h2>Core Contributions</h2>
         <ul className="feature-list">
-          <li><strong>ML Pipeline Development:</strong> Implementing research-oriented ML pipelines to evaluate model behavior and extract high-value patterns from unstructured datasets.</li>
-          <li><strong>NLP for Threat Context:</strong> Applying NLP techniques to structure and summarize text-heavy sources for downstream analysis.</li>
-          <li><strong>Graph Systems:</strong> Building graph analytics components and dashboard workflows that operate on vertex/edge structures to surface relationships and anomalies.</li>
-          <li><strong>Research Collaboration:</strong> Iterating with researchers and engineers on experiments, model assumptions, and system-level tradeoffs.</li>
+          <li><strong>NLP Pipelines:</strong> Build pipelines for entity extraction and semantic analysis across 60K+ unstructured text records and posts, supporting cybersecurity and intelligence analysis workflows in a national security context.</li>
+          <li><strong>Agentic System Red-Teaming:</strong> Evaluate 15 agentic LLM configurations against 6 categories of adversarial and injection-style attacks on an isolated 3-VM testbed, quantifying how prompt design, tool permissions, and guardrail placement drive failure rates.</li>
+          <li><strong>Briefings:</strong> Brief 5 program stakeholders on model-vulnerability findings, informing security assessments and program-level architecture decisions.</li>
         </ul>
 
         <h2>What I&apos;m Learning</h2>

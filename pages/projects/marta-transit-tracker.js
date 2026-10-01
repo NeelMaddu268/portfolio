@@ -30,6 +30,17 @@ export default function MartaTransitTracker() {
           A full-stack, real-time transit tracker for Atlanta&apos;s MARTA network—turning noisy public feeds into a fast, native iOS experience.
         </p>
 
+        <figure style={{ margin: '2rem 0', textAlign: 'center' }}>
+          <img
+            src="/projects/marta/demo.gif"
+            alt="Live demo: real-time map, departure boards with countdowns, commute card, and single-route view"
+            style={{ width: '100%', maxWidth: '340px', borderRadius: '1.5rem' }}
+          />
+          <figcaption style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.75rem' }}>
+            Live data: the system map with rail lines, Five Points departures counting down each second, a saved commute with bay guidance, and a single-route live view.
+          </figcaption>
+        </figure>
+
         <h2>The Problem</h2>
         <p>
           Public transit data is published through the GTFS and GTFS-Realtime standards, but the raw feeds are messy: vehicle positions drift, delay information is inconsistent, and real-world feeds routinely diverge from what the official documentation promises. I wanted a rider-facing app that felt instant and trustworthy, which meant building an ingestion layer that could absorb those imperfections rather than surface them.
@@ -45,6 +56,21 @@ export default function MartaTransitTracker() {
           <li><strong>Native Client:</strong> A SwiftUI app tracking roughly 200 live vehicles with a 15-second refresh, plus a WidgetKit extension for at-a-glance arrivals.</li>
           <li><strong>Trip Planning:</strong> Integrated OpenTripPlanner to deliver delay-aware, multi-leg trip planning on top of the live feed data.</li>
         </ul>
+
+        <h2>Screenshots</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1.25rem', margin: '1.5rem 0 2.5rem' }}>
+          {[
+            ['map-live.png', 'Live system map'],
+            ['departures-bays.png', 'Departures with bay guidance'],
+            ['commute-alerts.png', 'Commute card, alerts and confidence'],
+            ['route-map.png', 'Single-route live map']
+          ].map(([file, caption]) => (
+            <figure key={file} style={{ margin: 0, textAlign: 'center' }}>
+              <img src={`/projects/marta/${file}`} alt={caption} style={{ width: '100%', borderRadius: '1rem' }} />
+              <figcaption style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.5rem' }}>{caption}</figcaption>
+            </figure>
+          ))}
+        </div>
 
         <h2>Challenges Overcome</h2>
         <p>

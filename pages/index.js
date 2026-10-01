@@ -33,6 +33,18 @@ const projects = [
     projectSlug: 'marta-transit-tracker'
   },
   {
+    title: 'Contour (in progress)',
+    description: 'An on-device iOS accessibility app that guides blind and low-vision users to buttons on unfamiliar appliance panels using Vision and haptic/audio feedback. Building it with a 20+ person GT iOS Club team, where I co-lead the team and the Surface Understanding sub-team.',
+    techStack: ['Swift', 'SwiftUI', 'Vision', 'Core Haptics', 'Swift Packages'],
+    projectSlug: 'contour'
+  },
+  {
+    title: 'Hidden Quakes',
+    description: "Rebuilt a 15x denser earthquake catalog for Utah's FORGE geothermal site from raw public seismometer data in 36 hours at HackGT 13: 654 candidate events vs. 43 in the public catalog, with all 43 recovered. I owned association, relocation, and validation.",
+    techStack: ['Python', 'PyTorch', 'SeisBench', 'PyOcto', 'ObsPy', 'React Three Fiber'],
+    projectSlug: 'hidden-quakes'
+  },
+  {
     title: 'LLM Red-Teaming Evaluation Pipeline',
     description: 'An extensible prompt-injection evaluation framework testing local and frontier LLMs across 46 payloads and 41 techniques, with a dual rule-based + LLM-as-judge scoring pipeline that quantified up to a 47% robustness gap on local 8B models.',
     techStack: ['Python', 'Streamlit', 'Ollama', 'Anthropic API', 'pytest'],
@@ -52,7 +64,7 @@ const projects = [
   },
   {
     title: 'Real-Time ASL Interpreter',
-    description: 'A computer vision pipeline using MediaPipe to accurately predict and interpret continuous American Sign Language streams into real-time synthesized speech.',
+    description: 'A real-time computer vision pipeline that recognizes static ASL alphabet gestures from a webcam at 95% accuracy, using MediaPipe hand landmarks and a scikit-learn classifier, with text-to-speech output.',
     techStack: ['Python', 'OpenCV', 'MediaPipe', 'Scikit-learn', 'Streamlit'],
     projectSlug: 'asl-interpreter'
   }
@@ -66,51 +78,49 @@ const experience = [
     date: 'May 2026 - Present',
     experienceSlug: 'gtri-cipher-lab',
     descriptionPoints: [
-      'Developing ML R&D solutions and graph analytics pipelines supporting cybersecurity and intelligence analysis workflows.',
-      'Applying NLP techniques to analyze large-scale unstructured data in a national security context.',
-      'Contributing to a graph analytics dashboard platform using vertex/edge graph structures in close collaboration with the research team.'
+      'Build NLP pipelines for entity extraction and semantic analysis across 60K+ unstructured text records and posts, supporting cybersecurity and intelligence analysis workflows in a national security context.',
+      'Evaluate 15 agentic LLM configurations against 6 categories of adversarial and injection-style attacks on an isolated 3-VM testbed, quantifying how prompt design, tool permissions, and guardrail placement drive failure rates.',
+      'Brief 5 program stakeholders on model-vulnerability findings, informing security assessments and program-level architecture decisions.'
     ]
   },
   {
-    role: 'Automated Algorithm Design - AlphaEvolve Subteam',
+    role: 'Undergraduate Researcher, Automated Algorithm Design',
     company: 'Georgia Institute of Technology VIP Program',
     location: 'Atlanta, GA',
     date: 'Jan 2026 - Present',
-    experienceSlug: 'vip-alphaevolve',
+    experienceSlug: 'vip-research',
     descriptionPoints: [
-      'Contributing to a GTRI-sponsored research program building a multi-objective genetic programming framework that evolves hybrid algorithms from data.',
-      'Extending the LLM-Guided Evolution (LLM-GE) framework to automate proposal, mutation, and evaluation loops for generated code.',
-      'Running reproducible experiments on Georgia Tech PACE ICE HPC infrastructure for neural architecture search and benchmarking.'
+      "Own the judge for an automated LLM jailbreaking pipeline built on LLM-Guided Evolution (LLM-GE), a framework cited as prior work by Google DeepMind's AlphaEvolve, running on Georgia Tech's PACE ICE HPC cluster.",
+      'Designed the scoring formula the team adopted as the search fitness function, rating refusal, on-topic, specificity, and convincingness separately on 0-1 scales so empty compliance scores near zero.',
+      'Proposed a two-judge setup with HarmBench as an independent reporting judge to catch the search overfitting its own scorer; first runs showed a 46.2% vs. 30.6% attack-success gap between the judges.'
     ]
   },
   {
-    role: 'Senior iOS Developer',
+    role: 'Tech Lead (previously Senior iOS Developer, iOS Developer)',
     company: 'Georgia Tech iOS Club',
     location: 'Atlanta, GA',
-    date: 'Jan 2026 - Present',
+    date: 'Aug 2025 - Present',
     experienceSlug: 'gt-ios-club',
     descriptionPoints: [
-      'Led a team of 8 developers building iOS apps with Swift, Core ML, and Firebase across 3 club projects used by 150+ members.',
-      'Collaborated with designers and engineers to architect SwiftUI features using MVVM, reducing onboarding drop-off by 30%.',
-      'Reviewed 40+ pull requests, mentored 4 junior developers, and helped reduce bug rates while improving delivery speed.'
+      'Co-lead a 20+ developer team building Contour, an on-device iOS accessibility app that guides blind and low-vision users to buttons on unfamiliar appliance panels using Vision and haptic/audio feedback.',
+      'Restructured the shared Swift codebase for 3 sub-teams and 12 parallel lanes working against common interface contracts; maintain CI and tooling, including the migration to Xcode 27 and iOS 27.',
+      "Grew from developer to Tech Lead across 3 apps in 3 semesters, including Slack API messaging for SmartCompose; authored 17 and merged 22 pull requests across the club's repos."
     ]
   }
 ];
 
 const skills = {
-  "Machine Learning": "PyTorch, TensorFlow, scikit-learn, FAISS",
-  "Data": "pandas, NumPy",
-  "iOS Development": "Swift, SwiftUI, Core ML, MVVM",
-  "Backend & Databases": "SQL, MySQL, MongoDB, Firebase, Node.js",
-  "Programming Languages": "Python, Java, C, C++, JavaScript, Next.js, React",
-  "Tools": "Git, GitHub, CI/CD, Jenkins, GitHub Actions, Docker, CMake",
-  "Cloud": "AWS, Azure"
+  "Languages": "Python, Java, C, C++, JavaScript, Swift, SQL",
+  "ML & AI": "PyTorch, TensorFlow, scikit-learn, FAISS, MediaPipe, NLP, LLM Evaluation, Graph Analytics",
+  "iOS Development": "SwiftUI, Core ML, Vision, WidgetKit, MVVM",
+  "Frameworks & Libraries": "FastAPI, Node.js, React, Next.js, Streamlit, pandas, NumPy",
+  "Data & Infrastructure": "MySQL, MongoDB, SQLite, Firebase, Docker, Git, GitHub Actions, Jenkins, CI/CD"
 };
 
 const summaryHighlights = [
-  'Incoming Software Engineer Intern at GTRI CIPHER Lab focused on ML systems for cybersecurity and intelligence analysis.',
-  'Built and deployed AI-powered products including a multimodal image search engine over 10,000+ assets.',
-  'Led iOS product development with SwiftUI and Core ML, combining research-grade models with production UX.'
+  "Software Engineer Intern at GTRI's CIPHER Lab, building NLP pipelines and red-teaming agentic LLM systems for cybersecurity and intelligence analysis.",
+  'Undergraduate researcher on an automated LLM jailbreaking pipeline, where I own the judge that scores attacks inside an evolutionary search.',
+  'Tech Lead at the GT iOS Club, co-leading 20+ developers building Contour, an on-device iOS accessibility app.'
 ];
 
 export default function Home() {
@@ -163,11 +173,11 @@ export default function Home() {
               variants={fadeUp}
               style={{ fontSize: 'clamp(1.1rem, 2vw, 1.25rem)', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.8 }}
             >
-              Hey, I&apos;m Neel. I&apos;m a software engineer and Georgia Tech CS student focused on applied AI and iOS. I&apos;m currently building ML and graph analytics systems at GTRI&apos;s CIPHER Lab and shipping production-level SwiftUI apps with Core ML.
+              Hey, I&apos;m Neel. I&apos;m a software engineer and Georgia Tech CS student focused on applied AI and iOS. I&apos;m currently building NLP and LLM security systems at GTRI&apos;s CIPHER Lab and leading a 20+ person iOS team at Georgia Tech.
             </motion.p>
             <motion.div variants={fadeUp} style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               <a href="#projects" className="btn-primary">View Portfolio →</a>
-              <a href="mailto:nmaddu3@gatech.edu" className="btn-secondary">Message Me</a>
+              <a href="mailto:neelmaddu1@gmail.com" className="btn-secondary">Message Me</a>
             </motion.div>
           </motion.div>
 
@@ -248,7 +258,7 @@ export default function Home() {
         <motion.div variants={fadeUp} className="glass-panel education-card" style={{ padding: '2rem' }}>
           <h3 style={{ marginBottom: '0.5rem' }}>Georgia Institute of Technology</h3>
           <p style={{ color: 'var(--accent-blue)', marginBottom: '0.5rem' }}>Bachelor of Science in Computer Science</p>
-          <p style={{ color: 'var(--text-muted)' }}>Atlanta, GA · GPA: 4.0 · Expected May 2027</p>
+          <p style={{ color: 'var(--text-muted)' }}>Atlanta, GA · GPA: 4.0 · Expected Dec 2027</p>
         </motion.div>
       </motion.section>
 
@@ -359,7 +369,7 @@ export default function Home() {
             © {new Date().getFullYear()} Neel Maddu. Built with Next.js.
           </div>
           <div className="footer-links">
-            <a href="mailto:nmaddu3@gatech.edu">Email</a>
+            <a href="mailto:neelmaddu1@gmail.com">Email</a>
             <a href="https://linkedin.com/in/neel-maddu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://github.com/NeelMaddu268" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
