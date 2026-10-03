@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
 
 export default function HiddenQuakes() {
   return (
@@ -8,14 +8,8 @@ export default function HiddenQuakes() {
         <title>Hidden Quakes | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
 
-      <main className="article-container animate-fade-in delay-100">
+      <CaseStudyLayout>
         <div style={{ marginBottom: '3rem' }}>
           <span className="tech-badge">Python</span>
           <span className="tech-badge">PyTorch</span>
@@ -25,7 +19,7 @@ export default function HiddenQuakes() {
           <span className="tech-badge">React Three Fiber</span>
         </div>
 
-        <h1 className="text-gradient">Hidden Quakes</h1>
+        <h1>Hidden Quakes</h1>
         <p>
           Finding the small earthquakes the public catalog misses under Utah&apos;s FORGE geothermal site. Built by a team of four in 36 hours at HackGT 13.
         </p>
@@ -79,7 +73,7 @@ export default function HiddenQuakes() {
             Devpost
           </a>
         </div>
-      </main>
+      </CaseStudyLayout>
     </>
   );
 }

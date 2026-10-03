@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
 
 export default function GTRICipherLab() {
   return (
@@ -8,14 +8,8 @@ export default function GTRICipherLab() {
         <title>GTRI CIPHER Lab Experience | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
 
-      <main className="article-container animate-fade-in delay-100">
+      <CaseStudyLayout>
         <div style={{ marginBottom: '2rem' }}>
           <span className="tech-badge">NLP</span>
           <span className="tech-badge">LLM Security</span>
@@ -23,7 +17,7 @@ export default function GTRICipherLab() {
           <span className="tech-badge">Cybersecurity</span>
         </div>
 
-        <h1 className="text-gradient">Software Engineer Intern, CIPHER Lab</h1>
+        <h1>Software Engineer Intern, CIPHER Lab</h1>
         <p>
           Georgia Tech Research Institute (GTRI) · Threat Analysis Branch · Atlanta, GA · May 2026 - Present
         </p>
@@ -44,7 +38,7 @@ export default function GTRICipherLab() {
         <p>
           This role has strengthened my ability to bridge research and production constraints: balancing experimental agility with reproducibility, throughput, and actionable outputs for real-world mission contexts.
         </p>
-      </main>
+      </CaseStudyLayout>
     </>
   );
 }

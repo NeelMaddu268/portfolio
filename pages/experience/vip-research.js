@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
 
 export default function VIPResearch() {
   return (
@@ -8,14 +8,8 @@ export default function VIPResearch() {
         <title>VIP Research: LLM Jailbreak Judge | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
 
-      <main className="article-container animate-fade-in delay-100">
+      <CaseStudyLayout>
         <div style={{ marginBottom: '2rem' }}>
           <span className="tech-badge">LLM Security</span>
           <span className="tech-badge">LLM-GE</span>
@@ -24,7 +18,7 @@ export default function VIPResearch() {
           <span className="tech-badge">PACE HPC</span>
         </div>
 
-        <h1 className="text-gradient">Undergraduate Researcher, Automated Algorithm Design</h1>
+        <h1>Undergraduate Researcher, Automated Algorithm Design</h1>
         <p>
           Georgia Institute of Technology · VIP Program · Atlanta, GA · Jan 2026 - Present
         </p>
@@ -49,7 +43,7 @@ export default function VIPResearch() {
         <p>
           The two judges disagree. On an 11-generation run, the in-loop judge reported <strong>46.2% attack success</strong> while HarmBench put it at <strong>30.6%</strong>. On a 17-generation run, the in-loop judge&apos;s top-ranked attack scored 57% on HarmBench while a lower-ranked one scored 90%. That&apos;s exactly the kind of gap the two-judge setup was built to surface. Telling whether it means the search is gaming its scorer or one judge is simply wrong takes human labels, which is the next phase.
         </p>
-      </main>
+      </CaseStudyLayout>
     </>
   );
 }

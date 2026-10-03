@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
 
 export default function ASLInterpreter() {
   return (
@@ -8,14 +8,8 @@ export default function ASLInterpreter() {
         <title>Real-Time ASL Interpreter | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
 
-      <main className="article-container animate-fade-in delay-100">
+      <CaseStudyLayout>
         <div style={{ marginBottom: '3rem' }}>
           <span className="tech-badge">Python</span>
           <span className="tech-badge">OpenCV</span>
@@ -23,7 +17,7 @@ export default function ASLInterpreter() {
           <span className="tech-badge">Scikit-learn</span>
         </div>
 
-        <h1 className="text-gradient">Real-Time ASL Interpreter</h1>
+        <h1>Real-Time ASL Interpreter</h1>
         <p>
           Computer vision pipeline bridging the communication gap.
         </p>
@@ -53,7 +47,7 @@ export default function ASLInterpreter() {
             GitHub Code
           </a>
         </div>
-      </main>
+      </CaseStudyLayout>
     </>
   );
 }

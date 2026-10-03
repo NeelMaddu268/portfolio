@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
 
 export default function JotDown() {
   return (
@@ -8,14 +8,8 @@ export default function JotDown() {
         <title>JotDown | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
 
-      <main className="article-container animate-fade-in delay-100">
+      <CaseStudyLayout>
         <div style={{ marginBottom: '3rem' }}>
           <span className="tech-badge">SwiftUI</span>
           <span className="tech-badge">MVVM</span>
@@ -23,7 +17,7 @@ export default function JotDown() {
           <span className="tech-badge">NLP</span>
         </div>
 
-        <h1 className="text-gradient">JotDown</h1>
+        <h1>JotDown</h1>
         <p>
           An iOS platform blending hyper-minimalist note-taking with on-device semantic awareness.
         </p>
@@ -48,7 +42,7 @@ export default function JotDown() {
         <p>
           JotDown successfully marries advanced AI with native iOS development, proving that powerful large-scale data manipulation doesn&apos;t require backend cloud dependency; it can effectively run in the palm of your hand utilizing efficient algorithmic logic.
         </p>
-      </main>
+      </CaseStudyLayout>
     </>
   );
 }

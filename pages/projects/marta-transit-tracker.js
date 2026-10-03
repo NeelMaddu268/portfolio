@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
 
 export default function MartaTransitTracker() {
   return (
@@ -8,14 +8,8 @@ export default function MartaTransitTracker() {
         <title>MARTA Live Transit Tracker | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
 
-      <main className="article-container animate-fade-in delay-100">
+      <CaseStudyLayout>
         <div style={{ marginBottom: '3rem' }}>
           <span className="tech-badge">Python</span>
           <span className="tech-badge">FastAPI</span>
@@ -25,9 +19,9 @@ export default function MartaTransitTracker() {
           <span className="tech-badge">GTFS-Realtime</span>
         </div>
 
-        <h1 className="text-gradient">MARTA Live Transit Tracker</h1>
+        <h1>MARTA Live Transit Tracker</h1>
         <p>
-          A full-stack, real-time transit tracker for Atlanta&apos;s MARTA network—turning noisy public feeds into a fast, native iOS experience.
+          A full-stack, real-time transit tracker for Atlanta&apos;s MARTA network, turning noisy public feeds into a fast, native iOS experience.
         </p>
 
         <figure style={{ margin: '2rem 0', textAlign: 'center' }}>
@@ -36,7 +30,7 @@ export default function MartaTransitTracker() {
             alt="Live demo: real-time map, departure boards with countdowns, commute card, and single-route view"
             style={{ width: '100%', maxWidth: '340px', borderRadius: '1.5rem' }}
           />
-          <figcaption style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.75rem' }}>
+          <figcaption style={{ color: 'var(--muted)', fontSize: '0.9rem', marginTop: '0.75rem' }}>
             Live data: the system map with rail lines, Five Points departures counting down each second, a saved commute with bay guidance, and a single-route live view.
           </figcaption>
         </figure>
@@ -67,7 +61,7 @@ export default function MartaTransitTracker() {
           ].map(([file, caption]) => (
             <figure key={file} style={{ margin: 0, textAlign: 'center' }}>
               <img src={`/projects/marta/${file}`} alt={caption} style={{ width: '100%', borderRadius: '1rem' }} />
-              <figcaption style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.5rem' }}>{caption}</figcaption>
+              <figcaption style={{ color: 'var(--muted)', fontSize: '0.85rem', marginTop: '0.5rem' }}>{caption}</figcaption>
             </figure>
           ))}
         </div>
@@ -82,7 +76,7 @@ export default function MartaTransitTracker() {
             GitHub Code
           </a>
         </div>
-      </main>
+      </CaseStudyLayout>
     </>
   );
 }

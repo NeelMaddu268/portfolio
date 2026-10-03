@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
 
 export default function MultimodalSearch() {
   return (
@@ -8,14 +8,8 @@ export default function MultimodalSearch() {
         <title>Multimodal AI Search | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
 
-      <main className="article-container animate-fade-in delay-100">
+      <CaseStudyLayout>
         <div style={{ marginBottom: '3rem' }}>
           <span className="tech-badge">Python</span>
           <span className="tech-badge">PyTorch</span>
@@ -23,7 +17,7 @@ export default function MultimodalSearch() {
           <span className="tech-badge">FAISS</span>
         </div>
 
-        <h1 className="text-gradient">Multimodal AI: Semantic Image Search</h1>
+        <h1>Multimodal AI: Semantic Image Search</h1>
         <p>
           Bridging the gap between natural language prompts and massive visual datasets.
         </p>
@@ -57,7 +51,7 @@ export default function MultimodalSearch() {
             GitHub Code
           </a>
         </div>
-      </main>
+      </CaseStudyLayout>
     </>
   );
 }

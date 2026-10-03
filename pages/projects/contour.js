@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
 
 export default function Contour() {
   return (
@@ -8,14 +8,8 @@ export default function Contour() {
         <title>Contour | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
 
-      <main className="article-container animate-fade-in delay-100">
+      <CaseStudyLayout>
         <div style={{ marginBottom: '3rem' }}>
           <span className="tech-badge">Swift</span>
           <span className="tech-badge">SwiftUI</span>
@@ -24,7 +18,7 @@ export default function Contour() {
           <span className="tech-badge">Swift Packages</span>
         </div>
 
-        <h1 className="text-gradient">Contour</h1>
+        <h1>Contour</h1>
         <p>
           An iOS app that helps blind and low-vision users find buttons on appliances they&apos;ve never seen. In progress with a 20+ person team at the Georgia Tech iOS Club.
         </p>
@@ -36,11 +30,11 @@ export default function Contour() {
           ].map(([file, caption]) => (
             <figure key={file} style={{ margin: 0, textAlign: 'center' }}>
               <img src={`/projects/contour/${file}`} alt={caption} style={{ width: '100%', maxWidth: '300px', borderRadius: '1.5rem' }} />
-              <figcaption style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.5rem' }}>{caption}</figcaption>
+              <figcaption style={{ color: 'var(--muted)', fontSize: '0.85rem', marginTop: '0.5rem' }}>{caption}</figcaption>
             </figure>
           ))}
         </div>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textAlign: 'center', marginBottom: '2.5rem' }}>
+        <p style={{ color: 'var(--muted)', fontSize: '0.85rem', textAlign: 'center', marginBottom: '2.5rem' }}>
           Figma mockups from the team&apos;s design lead. The app itself is still in progress.
         </p>
 
@@ -75,7 +69,7 @@ export default function Contour() {
         <p>
           The panel detector runs in the live pipeline. Button detection finds all 26 keys on a generated keypad and label reading passes 35 of 35 generated test panels, and both are next to be connected. The project has 83 automated tests in CI. Next up: live fingertip tracking and the haptic guidance loop, toward a working end-to-end prototype.
         </p>
-      </main>
+      </CaseStudyLayout>
     </>
   );
 }

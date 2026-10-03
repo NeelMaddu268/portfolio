@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
 
 export default function GTIOSClub() {
   return (
@@ -8,14 +9,8 @@ export default function GTIOSClub() {
         <title>Georgia Tech iOS Club Experience | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
 
-      <main className="article-container animate-fade-in delay-100">
+      <CaseStudyLayout>
         <div style={{ marginBottom: '2rem' }}>
           <span className="tech-badge">Swift</span>
           <span className="tech-badge">SwiftUI</span>
@@ -24,7 +19,7 @@ export default function GTIOSClub() {
           <span className="tech-badge">Team Leadership</span>
         </div>
 
-        <h1 className="text-gradient">Tech Lead, GT iOS Club</h1>
+        <h1>Tech Lead, GT iOS Club</h1>
         <p>
           Georgia Institute of Technology · Atlanta, GA · Aug 2025 - Present
         </p>
@@ -51,7 +46,7 @@ export default function GTIOSClub() {
         <p>
           Across the club&apos;s three app repos I&apos;ve authored <strong>17 pull requests</strong> and merged <strong>22</strong>.
         </p>
-      </main>
+      </CaseStudyLayout>
     </>
   );
 }
