@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
-import { CaseHero, CaseStats, Phones, NextLink } from '@/components/CaseStudy';
+import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
 
 export default function MartaTransitTracker() {
   return (
@@ -9,7 +9,7 @@ export default function MartaTransitTracker() {
         <title>MARTA Live Transit Tracker | Neel Maddu</title>
       </Head>
 
-      <CaseStudyLayout>
+      <CaseStudyLayout backHref="/#project-marta-transit-tracker">
         <CaseHero
           title="MARTA Live Transit Tracker"
           sub="A live transit tracker for Atlanta's MARTA network. I built the backend and the SwiftUI app to make noisy public feeds feel fast and trustworthy."
@@ -31,8 +31,8 @@ export default function MartaTransitTracker() {
           ]}
         />
 
-        <Phones
-          shots={[
+        <Media
+          items={[
             { src: '/projects/marta/demo.gif', width: 420, height: 914, hero: true, cap: 'Live data across the app' },
             { src: '/projects/marta/map-live.png', width: 404, height: 880, cap: 'Live system map' },
             { src: '/projects/marta/departures-bays.png', width: 404, height: 880, cap: 'Departures with bay guidance' },

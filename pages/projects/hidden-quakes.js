@@ -9,7 +9,7 @@ export default function HiddenQuakes() {
         <title>Hidden Quakes | Neel Maddu</title>
       </Head>
 
-      <CaseStudyLayout>
+      <CaseStudyLayout backHref="/#project-hidden-quakes">
         <CaseHero
           title="Hidden Quakes"
           sub="Finding the small earthquakes the public catalog misses under Utah's FORGE geothermal site. Built by a team of four in 36 hours at HackGT 13."

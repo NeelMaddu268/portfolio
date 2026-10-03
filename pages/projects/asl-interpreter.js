@@ -9,7 +9,7 @@ export default function ASLInterpreter() {
         <title>ASL Interpreter | Neel Maddu</title>
       </Head>
 
-      <CaseStudyLayout>
+      <CaseStudyLayout backHref="/#project-asl-interpreter">
         <CaseHero
           title="Real-Time ASL Interpreter"
           sub="A real-time interpreter that reads static ASL alphabet signs from a webcam and speaks them aloud."

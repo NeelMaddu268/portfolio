@@ -9,7 +9,7 @@ export default function MultimodalSearch() {
         <title>Multimodal AI Search | Neel Maddu</title>
       </Head>
 
-      <CaseStudyLayout>
+      <CaseStudyLayout backHref="/#project-multimodal-search">
         <CaseHero
           title="Multimodal AI Search"
           sub="A search engine that finds images from a plain-language description instead of tags or filenames."

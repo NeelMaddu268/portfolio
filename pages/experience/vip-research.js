@@ -9,7 +9,7 @@ export default function VIPResearch() {
         <title>Undergraduate Researcher, Automated Algorithm Design | Neel Maddu</title>
       </Head>
 
-      <CaseStudyLayout>
+      <CaseStudyLayout backHref="/#exp-vip-research">
         <CaseHero
           title="Undergraduate Researcher, Automated Algorithm Design"
           sub="I own the judge in an automated LLM jailbreaking pipeline, the part that decides whether an attack actually worked."

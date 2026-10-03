@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
-import { CaseHero, CaseStats, Phones, NextLink } from '@/components/CaseStudy';
+import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
 
 export default function Contour() {
   return (
@@ -9,7 +9,7 @@ export default function Contour() {
         <title>Contour | Neel Maddu</title>
       </Head>
 
-      <CaseStudyLayout>
+      <CaseStudyLayout backHref="/#project-contour">
         <CaseHero
           title="Contour"
           sub="An iOS app that helps blind and low-vision users find buttons on appliances they've never seen. I co-lead the build with a 20+ person team at the Georgia Tech iOS Club."
@@ -30,8 +30,8 @@ export default function Contour() {
           ]}
         />
 
-        <Phones
-          shots={[
+        <Media
+          items={[
             { src: '/projects/contour/tracking.jpg', width: 402, height: 874, cap: 'Tracking a finger to the START button' },
             { src: '/projects/contour/chart.jpg', width: 403, height: 874, cap: 'Exploring a chart by touch (planned)' },
           ]}

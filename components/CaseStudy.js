@@ -42,20 +42,32 @@ export function CaseStats({ items = [] }) {
   );
 }
 
-// shots: [{ src, width, height, cap, hero, unoptimized }]
-export function Phones({ shots = [], caption }) {
-  if (shots.length === 0) return null;
+// items: [{ src, alt, width, height, kind: 'phone' | 'wide', cap, hero }]
+// 'phone' images render in a centered phone frame; 'wide' images render as one 16:10 contain image.
+export function Media({ items = [], caption }) {
+  if (items.length === 0) return null;
+  const phones = items.filter((i) => (i.kind || 'phone') === 'phone');
+  const wides = items.filter((i) => i.kind === 'wide');
   return (
     <div className="case-shots">
-      <div className="phones">
-        {shots.map((s) => (
-          <figure className={`phone${s.hero ? ' hero-shot' : ''}`} key={s.src}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={s.src} alt={s.cap || ''} width={s.width} height={s.height} loading="lazy" />
-            {s.cap && <figcaption className="phone-cap">{s.cap}</figcaption>}
-          </figure>
-        ))}
-      </div>
+      {wides.map((w) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <figure className="media-wide" key={w.src}>
+          <img src={w.src} alt={w.alt || w.cap || ''} width={w.width} height={w.height} loading="lazy" />
+          {w.cap && <figcaption className="media-cap">{w.cap}</figcaption>}
+        </figure>
+      ))}
+      {phones.length > 0 && (
+        <div className="phones">
+          {phones.map((p) => (
+            <figure className={`phone${p.hero ? ' hero-shot' : ''}`} key={p.src}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={p.src} alt={p.alt || p.cap || ''} width={p.width} height={p.height} loading="lazy" />
+              {p.cap && <figcaption className="phone-cap">{p.cap}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )}
       {caption && <p className="media-cap">{caption}</p>}
     </div>
   );

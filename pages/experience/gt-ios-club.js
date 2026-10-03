@@ -10,7 +10,7 @@ export default function GTIOSClub() {
         <title>Tech Lead, GT iOS Club | Neel Maddu</title>
       </Head>
 
-      <CaseStudyLayout>
+      <CaseStudyLayout backHref="/#exp-gt-ios-club">
         <CaseHero
           title="Tech Lead, GT iOS Club"
           sub="I went from developer to Tech Lead across three iOS Club apps, and now co-lead the 20+ person team building Contour."

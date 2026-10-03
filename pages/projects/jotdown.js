@@ -9,7 +9,7 @@ export default function JotDown() {
         <title>JotDown | Neel Maddu</title>
       </Head>
 
-      <CaseStudyLayout>
+      <CaseStudyLayout backHref="/#project-jotdown">
         <CaseHero
           title="JotDown"
           sub="A minimal notes app for iOS that understands what you write, entirely on device."

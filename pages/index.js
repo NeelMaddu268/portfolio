@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,33 +16,21 @@ const experience = [
     org: 'CIPHER Lab, GTRI',
     date: 'May 2026 – Present',
     slug: 'gtri-cipher-lab',
-    points: [
-      'Build NLP pipelines for entity extraction and semantic analysis across 60K+ unstructured text records and posts, supporting cybersecurity and intelligence analysis workflows in a national security context.',
-      'Evaluate 15 agentic LLM configurations against 6 categories of adversarial and injection-style attacks on an isolated 3-VM testbed, quantifying how prompt design, tool permissions, and guardrail placement drive failure rates.',
-      'Brief 5 program stakeholders on model-vulnerability findings, informing security assessments and program-level architecture decisions.',
-    ],
+    summary: 'NLP pipelines over 60K+ records and red-teaming of 15 agentic LLM setups.',
   },
   {
     role: 'Undergraduate Researcher',
     org: 'Automated Algorithm Design VIP',
     date: 'Jan 2026 – Present',
     slug: 'vip-research',
-    points: [
-      "Own the judge for an automated LLM jailbreaking pipeline built on LLM-Guided Evolution (LLM-GE), a framework cited as prior work by Google DeepMind's AlphaEvolve, running on Georgia Tech's PACE ICE HPC cluster.",
-      'Designed the scoring formula the team adopted as the search fitness function, rating refusal, on-topic, specificity, and convincingness separately on 0-1 scales so empty compliance scores near zero.',
-      'Proposed a two-judge setup with HarmBench as an independent reporting judge to catch the search overfitting its own scorer; first runs showed a 46.2% vs. 30.6% attack-success gap between the judges.',
-    ],
+    summary: 'I own the judge for an automated LLM jailbreaking pipeline.',
   },
   {
     role: 'Tech Lead',
     org: 'Georgia Tech iOS Club',
     date: 'Aug 2025 – Present',
     slug: 'gt-ios-club',
-    points: [
-      'Co-lead a 20+ developer team building Contour, an on-device iOS accessibility app that guides blind and low-vision users to buttons on unfamiliar appliance panels using Vision and haptic/audio feedback.',
-      'Restructured the shared Swift codebase for 3 sub-teams and 12 parallel lanes working against common interface contracts; maintain CI and tooling, including the migration to Xcode 27 and iOS 27.',
-      "Grew from developer to Tech Lead across 3 apps in 3 semesters, including Slack API messaging for SmartCompose; authored 17 and merged 22 pull requests across the club's repos.",
-    ],
+    summary: 'Co-lead the 20+ developer team building Contour.',
   },
 ];
 
@@ -53,7 +42,30 @@ const skills = {
   'Data & Infrastructure': 'MySQL, MongoDB, SQLite, Firebase, Docker, Git, GitHub Actions, Jenkins, CI/CD',
 };
 
+const markFromHome = () => {
+  try {
+    sessionStorage.setItem('fromHome', '1');
+  } catch {}
+};
+
+const smoothTo = (e, id) => {
+  const el = typeof document !== 'undefined' && document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ behavior: 'smooth' });
+  if (window.history && window.history.replaceState) {
+    window.history.replaceState(null, '', `#${id}`);
+  }
+};
+
 export default function Home() {
+  // A fresh homepage visit resets the back-navigation flag.
+  useEffect(() => {
+    try {
+      sessionStorage.removeItem('fromHome');
+    } catch {}
+  }, []);
+
   return (
     <>
       <Head>
@@ -65,9 +77,9 @@ export default function Home() {
         <div className="wrap header-inner">
           <Link href="/" className="header-name">Neel Maddu</Link>
           <nav className="header-nav">
-            <a href="#experience" className="header-link">Experience</a>
-            <a href="#projects" className="header-link">Projects</a>
-            <a href="#contact" className="header-link">Contact</a>
+            <a href="#experience" className="header-link" onClick={(e) => smoothTo(e, 'experience')}>Experience</a>
+            <a href="#projects" className="header-link" onClick={(e) => smoothTo(e, 'projects')}>Projects</a>
+            <a href="#contact" className="header-link" onClick={(e) => smoothTo(e, 'contact')}>Contact</a>
             <a href={RESUME_HREF} target="_blank" rel="noopener noreferrer" className="pill pill-resume">Resume</a>
             <ThemeToggle />
           </nav>
@@ -93,7 +105,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="tile hero-photo">
-                <Image src="/headshot.jpg" alt="Neel Maddu" fill priority sizes="(max-width: 600px) 100vw, 350px" />
+                <Image src="/headshot.jpg" alt="Neel Maddu" fill priority sizes="(max-width: 600px) 100vw, 480px" />
               </div>
             </div>
 
@@ -136,18 +148,19 @@ export default function Home() {
             <div className="row">
               <div className="tile exp-tile">
                 {experience.map((exp) => (
-                  <div className="exp-row" key={exp.slug}>
+                  <Link
+                    key={exp.slug}
+                    id={`exp-${exp.slug}`}
+                    href={`/experience/${exp.slug}`}
+                    className="exp-row"
+                    onClick={markFromHome}
+                  >
                     <div className="exp-head">
                       <div className="exp-title">{exp.role} <span className="exp-org">· {exp.org}</span></div>
                       <div className="exp-date">{exp.date}</div>
                     </div>
-                    <ul className="exp-points">
-                      {exp.points.map((p) => <li key={p}>{p}</li>)}
-                    </ul>
-                    <div style={{ marginTop: '14px' }}>
-                      <Link href={`/experience/${exp.slug}`} className="link-item">Details →</Link>
-                    </div>
-                  </div>
+                    <div className="exp-line">{exp.summary} <span className="arrow">→</span></div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -158,50 +171,64 @@ export default function Home() {
             <h2 className="section-heading">Projects</h2>
             <div className="row">
               {featuredProjects.map((proj) => {
-                const hasMedia = proj.images && proj.images.length > 0;
+                const images = proj.images || [];
+                const phones = images.filter((i) => (i.kind || 'phone') === 'phone');
+                const wides = images.filter((i) => i.kind === 'wide');
+                const hasMedia = images.length > 0;
                 return (
-                  <div className={`tile proj-feature${hasMedia ? ' has-media' : ''}`} key={proj.slug}>
+                  <Link
+                    key={proj.slug}
+                    id={`project-${proj.slug}`}
+                    href={`/projects/${proj.slug}`}
+                    className={`tile proj-feature${hasMedia ? ' has-media' : ''}`}
+                    onClick={markFromHome}
+                  >
                     <div className="proj-feature-text">
                       <span className="tile-label">{proj.label}</span>
-                      <h3 className="proj-title"><Link href={`/projects/${proj.slug}`}>{proj.title}</Link></h3>
-                      <p className="proj-desc">{proj.description}</p>
-                      <ul className="proj-points">
-                        {proj.points.map((pt) => <li key={pt}>{pt}</li>)}
-                      </ul>
+                      <h3 className="proj-title">{proj.title}</h3>
+                      <p className="proj-desc">{proj.summary}</p>
                       <div className="chip-row">
-                        {proj.tech.map((t) => <span className="chip" key={t}>{t}</span>)}
+                        {proj.tech.slice(0, 4).map((t) => <span className="chip" key={t}>{t}</span>)}
                       </div>
-                      <div className="link-row">
-                        <Link href={`/projects/${proj.slug}`} className="link-item">Case study →</Link>
-                        {proj.links.map((l) => (
-                          <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="link-item">{l.label} ↗</a>
-                        ))}
-                      </div>
+                      <span className="proj-view">View project →</span>
                     </div>
                     {hasMedia && (
                       <div className="proj-feature-media">
-                        <div className="phones">
-                          {proj.images.map((img) => (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <figure className="phone" key={img.src}>
-                              <img src={img.src} alt={proj.title} width={img.width} height={img.height} loading="lazy" />
-                            </figure>
-                          ))}
-                        </div>
+                        {wides.map((w) => (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <figure className="media-wide" key={w.src}>
+                            <img src={w.src} alt={w.alt || ''} width={w.width} height={w.height} loading="lazy" />
+                          </figure>
+                        ))}
+                        {phones.length > 0 && (
+                          <div className="phones">
+                            {phones.map((p) => (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <figure className="phone" key={p.src}>
+                                <img src={p.src} alt={p.alt || ''} width={p.width} height={p.height} loading="lazy" />
+                              </figure>
+                            ))}
+                          </div>
+                        )}
                         {proj.mediaCaption && <p className="media-cap">{proj.mediaCaption}</p>}
                       </div>
                     )}
-                  </div>
+                  </Link>
                 );
               })}
             </div>
 
             <div className="row">
               {smallProjects.map((proj) => (
-                <Link key={proj.slug} href={`/projects/${proj.slug}`} className="tile proj-small">
+                <Link
+                  key={proj.slug}
+                  id={`project-${proj.slug}`}
+                  href={`/projects/${proj.slug}`}
+                  className="tile proj-small"
+                  onClick={markFromHome}
+                >
                   <div className="proj-small-title">{proj.title} →</div>
                   <div className="proj-small-desc">{proj.description}</div>
-                  <div className="proj-small-tech">{proj.tech}</div>
                 </Link>
               ))}
             </div>

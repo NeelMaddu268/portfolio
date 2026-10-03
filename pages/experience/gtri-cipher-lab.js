@@ -9,7 +9,7 @@ export default function GTRICipherLab() {
         <title>Software Engineer Intern, GTRI CIPHER Lab | Neel Maddu</title>
       </Head>
 
-      <CaseStudyLayout>
+      <CaseStudyLayout backHref="/#exp-gtri-cipher-lab">
         <CaseHero
           title="Software Engineer Intern, CIPHER Lab"
           sub="Turning unstructured text into signals analysts can use, and testing how agentic LLM systems hold up against adversarial attacks."

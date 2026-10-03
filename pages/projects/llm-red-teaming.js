@@ -9,7 +9,7 @@ export default function LLMRedTeaming() {
         <title>LLM Red-Teaming Pipeline | Neel Maddu</title>
       </Head>
 
-      <CaseStudyLayout>
+      <CaseStudyLayout backHref="/#project-llm-red-teaming">
         <CaseHero
           title="LLM Red-Teaming Pipeline"
           sub="A framework I built to measure how well language models resist prompt-injection attacks, and where their defenses quietly break down."
