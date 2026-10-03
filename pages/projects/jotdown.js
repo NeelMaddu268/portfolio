@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
+import { CaseHero, NextLink } from '@/components/CaseStudy';
 
 export default function JotDown() {
   return (
@@ -8,40 +9,37 @@ export default function JotDown() {
         <title>JotDown | Neel Maddu</title>
       </Head>
 
-
       <CaseStudyLayout>
-        <div style={{ marginBottom: '3rem' }}>
-          <span className="tech-badge">SwiftUI</span>
-          <span className="tech-badge">MVVM</span>
-          <span className="tech-badge">Core ML</span>
-          <span className="tech-badge">NLP</span>
-        </div>
+        <CaseHero
+          title="JotDown"
+          sub="A minimal notes app for iOS that understands what you write, entirely on device."
+          facts={[
+            { label: 'Role', value: 'iOS developer' },
+            { label: 'Team', value: 'GT iOS Club' },
+            { label: 'When', value: 'Fall 2025' },
+          ]}
+        />
 
-        <h1>JotDown</h1>
+        <h2>The idea</h2>
         <p>
-          An iOS platform blending hyper-minimalist note-taking with on-device semantic awareness.
+          I wanted a notes app with no friction for writing that still understood structure underneath. SwiftUI and MVVM keep the writing surface simple while the analysis runs behind it.
         </p>
 
-        <h2>Design Architecture</h2>
+        <h2>On-device understanding</h2>
         <p>
-          I architected the application utilizing <strong>SwiftUI</strong> and strict <strong>MVVM (Model-View-ViewModel)</strong> design patterns. The goal was to build a UI that had absolutely zero friction for data entry while hiding an immensely powerful structural engine beneath the surface.
+          JotDown runs its language processing with Core ML on the device, so notes never leave the phone.
         </p>
-
-        <h2>Core ML & NLP Integration</h2>
-        <p>
-          Most applications send text data to cloud providers to parse sentiment or tags. JotDown instead processes entirely on-device using Apple&apos;s <strong>Core ML</strong> framework to perform Natural Language Processing.
-        </p>
-
-        <ul className="feature-list">
-          <li><strong>Entity Recognition:</strong> Automatically detects dates, actionable keywords, and key themes without the user needing to manually tag them.</li>
-          <li><strong>Semantic Search:</strong> Searching &quot;grocery&quot; will pull up notes mentioning &quot;apples&quot; or &quot;milk&quot;, understanding the underlying semantic relationship.</li>
-          <li><strong>Data Visualization:</strong> A fully custom view that renders a knowledge node graph of notes overlapping in latent themes, helping discover hidden connections.</li>
+        <ul>
+          <li>It picks out dates, keywords, and themes without you tagging anything.</li>
+          <li>Semantic search goes by meaning, so searching grocery surfaces notes that mention apples or milk.</li>
         </ul>
 
-        <h2>Outcomes</h2>
+        <h2>The graph view</h2>
         <p>
-          JotDown successfully marries advanced AI with native iOS development, proving that powerful large-scale data manipulation doesn&apos;t require backend cloud dependency; it can effectively run in the palm of your hand utilizing efficient algorithmic logic.
+          A custom view draws a node graph of notes that share themes, so related thoughts cluster together and connections show up on their own.
         </p>
+
+        <NextLink href="/projects/asl-interpreter" title="ASL Interpreter" />
       </CaseStudyLayout>
     </>
   );

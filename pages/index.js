@@ -11,24 +11,47 @@ const EMAIL_HREF = 'mailto:neelmaddu1@gmail.com';
 
 const experience = [
   {
-    title: 'Software Engineer Intern',
+    role: 'Software Engineer Intern',
     org: 'CIPHER Lab, GTRI',
-    description: 'NLP pipelines across 60K+ unstructured records. Evaluated 15 agentic LLM configurations against adversarial attacks.',
     date: 'May 2026 – Present',
+    slug: 'gtri-cipher-lab',
+    points: [
+      'Build NLP pipelines for entity extraction and semantic analysis across 60K+ unstructured text records and posts, supporting cybersecurity and intelligence analysis workflows in a national security context.',
+      'Evaluate 15 agentic LLM configurations against 6 categories of adversarial and injection-style attacks on an isolated 3-VM testbed, quantifying how prompt design, tool permissions, and guardrail placement drive failure rates.',
+      'Brief 5 program stakeholders on model-vulnerability findings, informing security assessments and program-level architecture decisions.',
+    ],
   },
   {
-    title: 'Undergraduate Researcher',
+    role: 'Undergraduate Researcher',
     org: 'Automated Algorithm Design VIP',
-    description: 'Own the judge for an LLM-guided evolution jailbreaking pipeline. Two-judge setup surfaced a 46.2% vs 30.6% attack-success gap.',
     date: 'Jan 2026 – Present',
+    slug: 'vip-research',
+    points: [
+      "Own the judge for an automated LLM jailbreaking pipeline built on LLM-Guided Evolution (LLM-GE), a framework cited as prior work by Google DeepMind's AlphaEvolve, running on Georgia Tech's PACE ICE HPC cluster.",
+      'Designed the scoring formula the team adopted as the search fitness function, rating refusal, on-topic, specificity, and convincingness separately on 0-1 scales so empty compliance scores near zero.',
+      'Proposed a two-judge setup with HarmBench as an independent reporting judge to catch the search overfitting its own scorer; first runs showed a 46.2% vs. 30.6% attack-success gap between the judges.',
+    ],
   },
   {
-    title: 'Tech Lead',
+    role: 'Tech Lead',
     org: 'Georgia Tech iOS Club',
-    description: 'Co-lead 20+ developers building Contour. Developer to Tech Lead across 3 apps in 3 semesters.',
     date: 'Aug 2025 – Present',
+    slug: 'gt-ios-club',
+    points: [
+      'Co-lead a 20+ developer team building Contour, an on-device iOS accessibility app that guides blind and low-vision users to buttons on unfamiliar appliance panels using Vision and haptic/audio feedback.',
+      'Restructured the shared Swift codebase for 3 sub-teams and 12 parallel lanes working against common interface contracts; maintain CI and tooling, including the migration to Xcode 27 and iOS 27.',
+      "Grew from developer to Tech Lead across 3 apps in 3 semesters, including Slack API messaging for SmartCompose; authored 17 and merged 22 pull requests across the club's repos.",
+    ],
   },
 ];
+
+const skills = {
+  Languages: 'Python, Java, C, C++, JavaScript, Swift, SQL',
+  'ML & AI': 'PyTorch, TensorFlow, scikit-learn, FAISS, MediaPipe, NLP, LLM Evaluation, Graph Analytics',
+  'iOS Development': 'SwiftUI, Core ML, Vision, WidgetKit, MVVM',
+  'Frameworks & Libraries': 'FastAPI, Node.js, React, Next.js, Streamlit, pandas, NumPy',
+  'Data & Infrastructure': 'MySQL, MongoDB, SQLite, Firebase, Docker, Git, GitHub Actions, Jenkins, CI/CD',
+};
 
 export default function Home() {
   return (
@@ -53,140 +76,164 @@ export default function Home() {
 
       <main className="wrap">
         <div className="sections">
-          {/* 1. Hero */}
-          <section className="row">
-            <div className="tile hero-intro">
-              <span className="tile-label">Software Engineer · CS @ Georgia Tech</span>
-              <h1 className="hero-title">I build AI security tools and iOS apps.</h1>
-              <p className="hero-body">
-                Software engineer intern at GTRI&apos;s CIPHER Lab, evaluating agentic LLMs against adversarial attacks. Tech Lead of the 20+ person iOS Club team building Contour.
-              </p>
-              <div className="hero-actions">
-                <a href={RESUME_HREF} target="_blank" rel="noopener noreferrer" className="pill pill-accent">Download resume</a>
-                <a href={EMAIL_HREF} className="pill pill-chip">Email me</a>
-                <a href={GITHUB_HREF} target="_blank" rel="noopener noreferrer" className="text-link">GitHub ↗</a>
-                <a href={LINKEDIN_HREF} target="_blank" rel="noopener noreferrer" className="text-link">LinkedIn ↗</a>
-              </div>
-            </div>
-            <div className="tile hero-photo">
-              <Image
-                src="/headshot.jpg"
-                alt="Neel Maddu"
-                fill
-                priority
-                sizes="(max-width: 600px) 100vw, 350px"
-              />
-            </div>
-          </section>
-
-          {/* 2. Stats */}
-          <section className="row">
-            <div className="tile stat stat-accent">
-              <span className="tile-label">Tech Lead · GT iOS Club</span>
-              <span className="stat-value">20+</span>
-              <span className="stat-caption">developers on the team I lead</span>
-            </div>
-            <div className="tile stat">
-              <span className="tile-label">MARTA Tracker</span>
-              <span className="stat-value">575K+</span>
-              <span className="stat-caption">arrival observations logged</span>
-            </div>
-            <div className="tile stat">
-              <span className="tile-label">Hidden Quakes</span>
-              <div className="bars">
-                <div className="bar-line">
-                  <span className="bar-num">654</span>
-                  <span className="bar-wrap"><span className="bar-fill" style={{ width: '100%', background: 'var(--accent)', display: 'block' }} /></span>
-                </div>
-                <div className="bar-line">
-                  <span className="bar-num muted">43</span>
-                  <span className="bar-wrap"><span className="bar-fill" style={{ width: '7%', background: 'var(--bar)', display: 'block' }} /></span>
+          {/* Intro: hero + quick stats */}
+          <div className="section">
+            <div className="row">
+              <div className="tile hero-intro">
+                <span className="tile-label">Software Engineer · CS @ Georgia Tech</span>
+                <h1 className="hero-title">I build AI security tools and iOS apps.</h1>
+                <p className="hero-body">
+                  Software engineer intern at GTRI&apos;s CIPHER Lab, evaluating agentic LLMs against adversarial attacks. Tech Lead of the 20+ person iOS Club team building Contour.
+                </p>
+                <div className="hero-actions">
+                  <a href={RESUME_HREF} target="_blank" rel="noopener noreferrer" className="pill pill-accent">Download resume</a>
+                  <a href={EMAIL_HREF} className="pill pill-chip">Email me</a>
+                  <a href={GITHUB_HREF} target="_blank" rel="noopener noreferrer" className="text-link">GitHub ↗</a>
+                  <a href={LINKEDIN_HREF} target="_blank" rel="noopener noreferrer" className="text-link">LinkedIn ↗</a>
                 </div>
               </div>
-              <span className="stat-caption">events found vs the public catalog</span>
+              <div className="tile hero-photo">
+                <Image src="/headshot.jpg" alt="Neel Maddu" fill priority sizes="(max-width: 600px) 100vw, 350px" />
+              </div>
             </div>
-            <div className="tile stat">
-              <span className="tile-label">LLM Red-Teaming</span>
-              <span className="stat-value value-accent">47%</span>
-              <span className="stat-caption">robustness gap on local 8B models</span>
-            </div>
-          </section>
 
-          {/* 3. Experience */}
-          <section className="row" id="experience">
-            <div className="tile exp-tile">
-              <span className="tile-label">Experience</span>
-              <div className="exp-rows">
+            <div className="row stats-row">
+              <div className="tile stat stat-accent">
+                <span className="tile-label">Georgia Tech · B.S. Computer Science</span>
+                <span className="stat-value">4.0</span>
+                <span className="stat-caption">GPA · graduating Dec 2027</span>
+              </div>
+              <div className="tile stat">
+                <span className="tile-label">MARTA Tracker</span>
+                <span className="stat-value">575K+</span>
+                <span className="stat-caption">arrival observations logged</span>
+              </div>
+              <div className="tile stat">
+                <span className="tile-label">Hidden Quakes</span>
+                <div className="bars">
+                  <div className="bar-line">
+                    <span className="bar-num">654</span>
+                    <span className="bar-wrap"><span className="bar-fill" style={{ width: '100%', background: 'var(--accent)' }} /></span>
+                  </div>
+                  <div className="bar-line">
+                    <span className="bar-num muted">43</span>
+                    <span className="bar-wrap"><span className="bar-fill" style={{ width: '7%', background: 'var(--bar)' }} /></span>
+                  </div>
+                </div>
+                <span className="stat-caption">events found vs the public catalog</span>
+              </div>
+              <div className="tile stat">
+                <span className="tile-label">LLM Red-Teaming</span>
+                <span className="stat-value value-accent">47%</span>
+                <span className="stat-caption">robustness gap on local 8B models</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Experience */}
+          <section className="section" id="experience">
+            <h2 className="section-heading">Experience</h2>
+            <div className="row">
+              <div className="tile exp-tile">
                 {experience.map((exp) => (
-                  <div key={exp.title} className="exp-row">
-                    <div className="exp-main">
-                      <div className="exp-title">{exp.title} <span className="exp-org">· {exp.org}</span></div>
-                      <div className="exp-desc">{exp.description}</div>
+                  <div className="exp-row" key={exp.slug}>
+                    <div className="exp-head">
+                      <div className="exp-title">{exp.role} <span className="exp-org">· {exp.org}</span></div>
+                      <div className="exp-date">{exp.date}</div>
                     </div>
-                    <div className="exp-date">{exp.date}</div>
+                    <ul className="exp-points">
+                      {exp.points.map((p) => <li key={p}>{p}</li>)}
+                    </ul>
+                    <div style={{ marginTop: '14px' }}>
+                      <Link href={`/experience/${exp.slug}`} className="link-item">Details →</Link>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           </section>
 
-          {/* 4. Projects */}
-          <section className="projects" id="projects">
+          {/* Projects */}
+          <section className="section" id="projects">
             <h2 className="section-heading">Projects</h2>
             <div className="row">
-              {featuredProjects.map((proj) => (
-                <Link key={proj.slug} href={`/projects/${proj.slug}`} className="tile proj-big">
-                  <div className="proj-text">
-                    <span className="tile-label">{proj.label}</span>
-                    <h3 className="proj-title">{proj.title}</h3>
-                    <p className="proj-desc">{proj.description}</p>
-                    <div className="proj-detail">{proj.detail}</div>
-                  </div>
-                  {proj.image && (
-                    <div className="proj-shot">
-                      <Image
-                        src={proj.image}
-                        alt={proj.title}
-                        fill
-                        sizes="(max-width: 600px) 100vw, 560px"
-                      />
+              {featuredProjects.map((proj) => {
+                const hasMedia = proj.images && proj.images.length > 0;
+                return (
+                  <div className={`tile proj-feature${hasMedia ? ' has-media' : ''}`} key={proj.slug}>
+                    <div className="proj-feature-text">
+                      <span className="tile-label">{proj.label}</span>
+                      <h3 className="proj-title"><Link href={`/projects/${proj.slug}`}>{proj.title}</Link></h3>
+                      <p className="proj-desc">{proj.description}</p>
+                      <ul className="proj-points">
+                        {proj.points.map((pt) => <li key={pt}>{pt}</li>)}
+                      </ul>
+                      <div className="chip-row">
+                        {proj.tech.map((t) => <span className="chip" key={t}>{t}</span>)}
+                      </div>
+                      <div className="link-row">
+                        <Link href={`/projects/${proj.slug}`} className="link-item">Case study →</Link>
+                        {proj.links.map((l) => (
+                          <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="link-item">{l.label} ↗</a>
+                        ))}
+                      </div>
                     </div>
-                  )}
-                </Link>
-              ))}
+                    {hasMedia && (
+                      <div className="proj-feature-media">
+                        <div className="phones">
+                          {proj.images.map((img) => (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <figure className="phone" key={img.src}>
+                              <img src={img.src} alt={proj.title} width={img.width} height={img.height} loading="lazy" />
+                            </figure>
+                          ))}
+                        </div>
+                        {proj.mediaCaption && <p className="media-cap">{proj.mediaCaption}</p>}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
+
             <div className="row">
               {smallProjects.map((proj) => (
                 <Link key={proj.slug} href={`/projects/${proj.slug}`} className="tile proj-small">
-                  <div className="proj-small-title">{proj.title}</div>
+                  <div className="proj-small-title">{proj.title} →</div>
                   <div className="proj-small-desc">{proj.description}</div>
+                  <div className="proj-small-tech">{proj.tech}</div>
                 </Link>
               ))}
             </div>
           </section>
 
-          {/* 5. Stack */}
-          <section className="row">
-            <div className="tile stack-tile">
-              <span className="tile-label">Stack</span>
-              <p className="stack-body">
-                Swift, SwiftUI, Core ML, Vision · Python, PyTorch, FAISS, scikit-learn · FastAPI, Next.js, React · SQL, Docker, Git
-              </p>
+          {/* Stack */}
+          <section className="section">
+            <h2 className="section-heading">Stack</h2>
+            <div className="row">
+              <div className="tile stack-tile">
+                {Object.entries(skills).map(([group, items]) => (
+                  <div className="stack-group" key={group}>
+                    <div className="stack-group-label">{group}</div>
+                    <div className="stack-group-items">{items}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
-          {/* 6. Contact */}
-          <section className="row" id="contact">
-            <div className="tile contact-tile">
-              <h2 className="contact-title">Get in touch</h2>
-              <a href={EMAIL_HREF} className="contact-email">neelmaddu1@gmail.com</a>
-              <div>
-                <a href={EMAIL_HREF} className="pill pill-contact">Email me</a>
+          {/* Contact */}
+          <section className="section" id="contact">
+            <h2 className="section-heading">Get in touch</h2>
+            <div className="row">
+              <div className="tile contact-tile">
+                <a href={EMAIL_HREF} className="contact-email">neelmaddu1@gmail.com</a>
+                <a href={EMAIL_HREF} className="pill pill-accent">Email me</a>
               </div>
-              <div className="site-footer">
-                <span>© 2026 Neel Maddu</span>
-                <span>Atlanta, GA</span>
-              </div>
+            </div>
+            <div className="site-footer">
+              <span>© 2026 Neel Maddu</span>
+              <span>Atlanta, GA</span>
             </div>
           </section>
         </div>

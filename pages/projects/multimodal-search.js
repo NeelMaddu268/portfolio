@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
+import { CaseHero, CaseStats, NextLink } from '@/components/CaseStudy';
 
 export default function MultimodalSearch() {
   return (
@@ -8,49 +9,48 @@ export default function MultimodalSearch() {
         <title>Multimodal AI Search | Neel Maddu</title>
       </Head>
 
-
       <CaseStudyLayout>
-        <div style={{ marginBottom: '3rem' }}>
-          <span className="tech-badge">Python</span>
-          <span className="tech-badge">PyTorch</span>
-          <span className="tech-badge">CLIP</span>
-          <span className="tech-badge">FAISS</span>
-        </div>
+        <CaseHero
+          title="Multimodal AI Search"
+          sub="A search engine that finds images from a plain-language description instead of tags or filenames."
+          facts={[
+            { label: 'Role', value: 'Solo project' },
+            { label: 'Scope', value: 'CLIP + FAISS search' },
+          ]}
+          links={[
+            { label: 'Live demo', href: 'https://huggingface.co/spaces/NM268/Multimodal-ai-search/' },
+            { label: 'GitHub', href: 'https://github.com/NeelMaddu268/multimodal-ai-search' },
+          ]}
+        />
 
-        <h1>Multimodal AI: Semantic Image Search</h1>
+        <CaseStats
+          items={[
+            { value: '10,000+', caption: 'images indexed' },
+            { value: '~2s', caption: 'average query time' },
+          ]}
+        />
+
+        <h2>Why tags fall short</h2>
         <p>
-          Bridging the gap between natural language prompts and massive visual datasets.
+          Traditional image search leans on tags and filenames, so it fails the moment you look for something descriptive or abstract that nobody labeled.
         </p>
 
-        <h2>The Problem</h2>
+        <h2>How search works</h2>
         <p>
-          Traditional image search relies heavily on pre-computed metadata and manual tagging. This approach completely fails when users want to search for highly descriptive or abstract concepts.
+          I used OpenAI&apos;s CLIP to put text queries and images into the same vector space, so a sentence and a picture can be compared directly.
         </p>
-
-        <h2>Architecture & Implementation</h2>
-        <p>
-          I designed a <strong>Multimodal Search Engine</strong> utilizing OpenAI&apos;s CLIP (Contrastive Language-Image Pretraining) model to encode both text queries and visual assets into the exact same semantic vector space.
-        </p>
-
-        <ul className="feature-list">
-          <li><strong>Data Ingestion:</strong> Over 10,000 images processed through a PyTorch data pipeline.</li>
-          <li><strong>Vector Storage:</strong> Utilized FAISS (Facebook AI Similarity Search) to index the high-dimensional embeddings for extremely rapid nearest-neighbor lookup.</li>
-          <li><strong>Frontend:</strong> A highly responsive Streamlit interface that actively updates an endless-scroll gallery as the user structures their prompt.</li>
+        <ul>
+          <li>A PyTorch pipeline encodes 10,000+ images into embeddings once, up front.</li>
+          <li>FAISS indexes those embeddings for fast nearest-neighbor lookup.</li>
+          <li>A Streamlit gallery updates as you refine the prompt.</li>
         </ul>
 
-        <h2>Challenges Overcome</h2>
+        <h2>Making it fast</h2>
         <p>
-          The most significant hurdle was optimizing the loading speed of the FAISS index and the PyTorch model size. Loading the raw tensor models sequentially bottlenecked initialization. By heavily caching the embeddings and leveraging tensor-optimized hardware rendering on deployment, query times dropped significantly, maintaining an average retrieval pipeline of just two seconds per query.
+          Loading the model and the FAISS index was the slow part. Caching the embeddings and warming the index up front brought the average query down to about two seconds.
         </p>
 
-        <div style={{ marginTop: '4rem', display: 'flex', gap: '1rem' }}>
-          <a href="https://huggingface.co/spaces/NM268/Multimodal-ai-search/" target="_blank" rel="noopener noreferrer" className="btn-primary">
-            View Live Demo
-          </a>
-          <a href="https://github.com/NeelMaddu268/multimodal-ai-search" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-            GitHub Code
-          </a>
-        </div>
+        <NextLink href="/projects/jotdown" title="JotDown" />
       </CaseStudyLayout>
     </>
   );

@@ -1,52 +1,50 @@
 import Head from 'next/head';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
+import { CaseHero, CaseStats, NextLink } from '@/components/CaseStudy';
 
 export default function ASLInterpreter() {
   return (
     <>
       <Head>
-        <title>Real-Time ASL Interpreter | Neel Maddu</title>
+        <title>ASL Interpreter | Neel Maddu</title>
       </Head>
 
-
       <CaseStudyLayout>
-        <div style={{ marginBottom: '3rem' }}>
-          <span className="tech-badge">Python</span>
-          <span className="tech-badge">OpenCV</span>
-          <span className="tech-badge">MediaPipe</span>
-          <span className="tech-badge">Scikit-learn</span>
-        </div>
+        <CaseHero
+          title="Real-Time ASL Interpreter"
+          sub="A real-time interpreter that reads static ASL alphabet signs from a webcam and speaks them aloud."
+          facts={[
+            { label: 'Role', value: 'Solo project' },
+            { label: 'Scope', value: 'Computer vision + TTS' },
+          ]}
+          links={[{ label: 'GitHub', href: 'https://github.com/NeelMaddu268/ASL_Interpreter' }]}
+        />
 
-        <h1>Real-Time ASL Interpreter</h1>
+        <CaseStats
+          items={[
+            { value: '95%', caption: 'accuracy on the static alphabet' },
+            { value: '21', caption: 'hand landmarks per frame' },
+          ]}
+        />
+
+        <h2>The approach</h2>
         <p>
-          Computer vision pipeline bridging the communication gap.
+          Instead of pushing whole frames through a heavy image model, I track the hand&apos;s geometry and classify that. It is far lighter, so it runs in real time on a plain webcam.
         </p>
 
-        <h2>Overview</h2>
-        <p>
-          I engineered a <strong>Real-Time ASL Interpreter</strong> focused on translating static alphabet letters accurately using a live camera feed. This platform provides continuous tracking of gestures and converts recognized signs into synthesized text-to-speech output in real-time.
-        </p>
-
-        <h2>Pipeline & Technologies</h2>
-        <p>
-          Instead of just sending entire images into a bulky Convolutional Neural Network, the pipeline utilizes <strong>Google&apos;s MediaPipe</strong> framework. MediaPipe extracts precise structural geometry (21 3D landmarks) from the hand skeleton.
-        </p>
-        <p>
-          These coordinate vectors are serialized and fed into a custom <strong>scikit-learn</strong> classifier pipeline. This significantly increases frame rates and inference speeds since the mathematical payload is drastically reduced compared to pixel-inference arrays.
-        </p>
-
-        <ul className="feature-list">
-          <li><strong>Real-Time Tracking:</strong> Leverages OpenCV to capture streaming data and layer visual UI elements denoting the skeletal tracking grid.</li>
-          <li><strong>High Accuracy Classifier:</strong> Achieved 95% classification accuracy on static ASL alphabet gestures.</li>
-          <li><strong>Text-to-Speech Engine:</strong> Actively converts new and distinct sequential predictions into audible speech automatically, mimicking natural spoken word translation.</li>
-          <li><strong>UX Optimization:</strong> Integrated a &quot;None&quot; class and a mute toggle to prevent audio spamming when the user&apos;s gestures are transient or unclear between distinct letters.</li>
+        <h2>How it reads a sign</h2>
+        <ul>
+          <li>MediaPipe extracts 21 hand landmarks from each frame.</li>
+          <li>A scikit-learn classifier maps those coordinates to a letter, reaching 95% accuracy on the static alphabet.</li>
+          <li>New, distinct predictions are spoken aloud with text-to-speech.</li>
         </ul>
 
-        <div style={{ marginTop: '4rem', display: 'flex', gap: '1rem' }}>
-          <a href="https://github.com/NeelMaddu268/ASL_Interpreter" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-            GitHub Code
-          </a>
-        </div>
+        <h2>Keeping it usable</h2>
+        <p>
+          OpenCV draws the skeletal tracking overlay so you can see what the model sees. A None class and a mute toggle stop it from blurting out noise while your hand is between letters.
+        </p>
+
+        <NextLink href="/projects/marta-transit-tracker" title="MARTA Live Transit Tracker" />
       </CaseStudyLayout>
     </>
   );

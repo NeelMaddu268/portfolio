@@ -6,9 +6,9 @@ export default function CaseStudyLayout({ children }) {
     <>
       <nav className="subnav">
         <div className="wrap subnav-inner">
-          <Link href="/" className="back-link">← Back</Link>
+          <Link href="/" className="header-name">Neel Maddu</Link>
           <div className="subnav-right">
-            <Link href="/" className="header-name">Neel Maddu</Link>
+            <Link href="/" className="back-link">← Back</Link>
             <ThemeToggle />
           </div>
         </div>
