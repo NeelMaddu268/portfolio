@@ -1,18 +1,19 @@
-import Head from 'next/head';
+import Seo from '@/components/Seo';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
+
+const DESCRIPTION =
+  "Finding the small earthquakes the public catalog misses under Utah's FORGE geothermal site. Built by a team of four in 36 hours at HackGT 13.";
 
 export default function HiddenQuakes() {
   return (
     <>
-      <Head>
-        <title>Hidden Quakes | Neel Maddu</title>
-      </Head>
+      <Seo title="Hidden Quakes | Neel Maddu" description={DESCRIPTION} />
 
       <CaseStudyLayout backHref="/#project-hidden-quakes">
         <CaseHero
           title="Hidden Quakes"
-          sub="Finding the small earthquakes the public catalog misses under Utah's FORGE geothermal site. Built by a team of four in 36 hours at HackGT 13."
+          sub={DESCRIPTION}
           facts={[
             { label: 'Role', value: 'Seismology lead' },
             { label: 'Team', value: '4 people' },

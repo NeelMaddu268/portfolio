@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Head from 'next/head';
+import Seo from '@/components/Seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -68,10 +68,7 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Neel Maddu</title>
-        <meta name="description" content="Neel Maddu builds AI security tools and iOS apps." />
-      </Head>
+      <Seo />
 
       <header className="site-header">
         <div className="wrap header-inner">

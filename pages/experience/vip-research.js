@@ -1,18 +1,19 @@
-import Head from 'next/head';
+import Seo from '@/components/Seo';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import { CaseHero, CaseStats, NextLink } from '@/components/CaseStudy';
+
+const DESCRIPTION =
+  "I own the judge in an automated LLM jailbreaking pipeline, the part that decides whether an attack actually worked.";
 
 export default function VIPResearch() {
   return (
     <>
-      <Head>
-        <title>Undergraduate Researcher, Automated Algorithm Design | Neel Maddu</title>
-      </Head>
+      <Seo title="Undergraduate Researcher, Automated Algorithm Design | Neel Maddu" description={DESCRIPTION} />
 
       <CaseStudyLayout backHref="/#exp-vip-research">
         <CaseHero
           title="Undergraduate Researcher, Automated Algorithm Design"
-          sub="I own the judge in an automated LLM jailbreaking pipeline, the part that decides whether an attack actually worked."
+          sub={DESCRIPTION}
           facts={[
             { label: 'Program', value: 'VIP, Georgia Tech' },
             { label: 'Focus', value: 'LLM red-teaming research' },

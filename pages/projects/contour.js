@@ -1,18 +1,19 @@
-import Head from 'next/head';
+import Seo from '@/components/Seo';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
+
+const DESCRIPTION =
+  "An iOS app that helps blind and low-vision users find buttons on appliances they've never seen. I co-lead the build with a 20+ person team at the Georgia Tech iOS Club.";
 
 export default function Contour() {
   return (
     <>
-      <Head>
-        <title>Contour | Neel Maddu</title>
-      </Head>
+      <Seo title="Contour | Neel Maddu" description={DESCRIPTION} />
 
       <CaseStudyLayout backHref="/#project-contour">
         <CaseHero
           title="Contour"
-          sub="An iOS app that helps blind and low-vision users find buttons on appliances they've never seen. I co-lead the build with a 20+ person team at the Georgia Tech iOS Club."
+          sub={DESCRIPTION}
           facts={[
             { label: 'Role', value: 'Tech Lead' },
             { label: 'Team', value: 'GT iOS Club, 20+' },

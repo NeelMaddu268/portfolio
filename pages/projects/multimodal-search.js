@@ -1,18 +1,19 @@
-import Head from 'next/head';
+import Seo from '@/components/Seo';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
+
+const DESCRIPTION =
+  "Search 8,091 Flickr8k photos by describing them, showing an example image, or both.";
 
 export default function MultimodalSearch() {
   return (
     <>
-      <Head>
-        <title>Multimodal AI Search | Neel Maddu</title>
-      </Head>
+      <Seo title="Multimodal AI Search | Neel Maddu" description={DESCRIPTION} />
 
       <CaseStudyLayout backHref="/#project-multimodal-search">
         <CaseHero
           title="Multimodal AI Search"
-          sub="Search 8,091 Flickr8k photos by describing them, showing an example image, or both."
+          sub={DESCRIPTION}
           facts={[
             { label: 'Role', value: 'Solo project' },
             { label: 'Status', value: 'Live on Hugging Face' },

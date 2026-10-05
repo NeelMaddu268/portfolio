@@ -1,18 +1,19 @@
-import Head from 'next/head';
+import Seo from '@/components/Seo';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
+
+const DESCRIPTION =
+  "A live transit tracker for Atlanta's MARTA network. I built the backend and the SwiftUI app to make noisy public feeds feel fast and trustworthy.";
 
 export default function MartaTransitTracker() {
   return (
     <>
-      <Head>
-        <title>MARTA Live Transit Tracker | Neel Maddu</title>
-      </Head>
+      <Seo title="MARTA Live Transit Tracker | Neel Maddu" description={DESCRIPTION} />
 
       <CaseStudyLayout backHref="/#project-marta-transit-tracker">
         <CaseHero
           title="MARTA Live Transit Tracker"
-          sub="A live transit tracker for Atlanta's MARTA network. I built the backend and the SwiftUI app to make noisy public feeds feel fast and trustworthy."
+          sub={DESCRIPTION}
           facts={[
             { label: 'Role', value: 'Solo project' },
             { label: 'Scope', value: 'SwiftUI app + FastAPI backend' },

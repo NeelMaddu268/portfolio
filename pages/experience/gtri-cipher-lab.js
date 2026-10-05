@@ -1,18 +1,19 @@
-import Head from 'next/head';
+import Seo from '@/components/Seo';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import { CaseHero, CaseStats, NextLink } from '@/components/CaseStudy';
+
+const DESCRIPTION =
+  "Turning unstructured text into signals analysts can use, and testing how agentic LLM systems hold up against adversarial attacks.";
 
 export default function GTRICipherLab() {
   return (
     <>
-      <Head>
-        <title>Software Engineer Intern, GTRI CIPHER Lab | Neel Maddu</title>
-      </Head>
+      <Seo title="Software Engineer Intern, GTRI CIPHER Lab | Neel Maddu" description={DESCRIPTION} />
 
       <CaseStudyLayout backHref="/#exp-gtri-cipher-lab">
         <CaseHero
           title="Software Engineer Intern, CIPHER Lab"
-          sub="Turning unstructured text into signals analysts can use, and testing how agentic LLM systems hold up against adversarial attacks."
+          sub={DESCRIPTION}
           facts={[
             { label: 'Team', value: 'CIPHER Lab, GTRI' },
             { label: 'Branch', value: 'Threat Analysis' },
