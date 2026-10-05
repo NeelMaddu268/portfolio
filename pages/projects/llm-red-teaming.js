@@ -1,61 +1,97 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
+import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
 
 export default function LLMRedTeaming() {
   return (
     <>
       <Head>
-        <title>LLM Red-Teaming Evaluation Pipeline | Neel Maddu</title>
+        <title>LLM Red-Teaming Pipeline | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
+      <CaseStudyLayout backHref="/#project-llm-red-teaming">
+        <CaseHero
+          title="LLM Red-Teaming Pipeline"
+          sub="A framework I built to measure how well language models resist prompt-injection attacks, and where their defenses quietly break down."
+          facts={[
+            { label: 'Role', value: 'Solo project' },
+            { label: 'Scope', value: 'Prompt-injection evaluation' },
+            { label: 'Tests', value: '35 in CI' },
+          ]}
+          links={[
+            { label: 'Live demo', href: 'https://llm-redteam.streamlit.app' },
+            { label: 'GitHub', href: 'https://github.com/NeelMaddu268/llm-redteam' },
+          ]}
+        />
 
-      <main className="article-container animate-fade-in delay-100">
-        <div style={{ marginBottom: '3rem' }}>
-          <span className="tech-badge">Python</span>
-          <span className="tech-badge">Streamlit</span>
-          <span className="tech-badge">Ollama</span>
-          <span className="tech-badge">Anthropic API</span>
-          <span className="tech-badge">pytest</span>
-        </div>
+        <CaseStats
+          items={[
+            { value: '47%', caption: 'qwen2.5:7b, local' },
+            { value: '29%', caption: 'llama3.1:8b, local' },
+            { value: '3%', caption: 'Claude Sonnet 5' },
+            { value: '46', caption: 'payloads in the library' },
+          ]}
+        />
 
-        <h1 className="text-gradient">LLM Red-Teaming Evaluation Pipeline</h1>
+        <Media
+          items={[
+            {
+              src: '/projects/llm-red-teaming/dashboard.png',
+              alt: 'Dashboard showing breakthrough rate by model under rule-based scoring',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: 'Three-model run: 34 payloads per model, 102 runs. The 26% is all three models combined. anthropic-direct is Claude Sonnet 5.',
+            },
+          ]}
+        />
+
+        <h2>Why measure robustness</h2>
         <p>
-          An extensible framework for measuring how well language models resist prompt-injection attacks—and where their defenses quietly break down.
+          As LLMs get wired into agentic systems with tool access, prompt injection becomes a real security surface rather than a curiosity. And whether a model is safe is not a yes or no question: robustness varies by attack technique, by model size, and by the defenses layered on top. I wanted a repeatable way to measure it instead of reasoning about it anecdotally.
         </p>
 
-        <h2>The Problem</h2>
+        <h2>How the harness is built</h2>
         <p>
-          As LLMs get wired into agentic systems with tool access, prompt injection becomes a real security surface rather than a curiosity. But &quot;is this model safe?&quot; is not a yes/no question—robustness varies by attack technique, by model size, and by the defenses layered on top. I set out to build a rigorous, repeatable way to <strong>quantify</strong> that robustness instead of reasoning about it anecdotally.
+          The framework keeps the provider, target, classifier, and defense as separate, pluggable layers, so new models, attacks, and mitigations can be swapped in without touching the core.
         </p>
-
-        <h2>Architecture &amp; Implementation</h2>
-        <p>
-          I designed an <strong>extensible prompt-injection evaluation framework</strong> with cleanly separated, pluggable layers—provider, target, classifier, and defense—so new models, attacks, and mitigations can be swapped in without touching the core harness.
-        </p>
-
-        <ul className="feature-list">
-          <li><strong>Attack Corpus:</strong> 46 attack payloads spanning 4 categories and 41 distinct techniques, exercised against both local and frontier models.</li>
-          <li><strong>Dual Scoring:</strong> A hybrid scoring pipeline combining deterministic rule-based checks with an LLM-as-judge, surfacing breakthroughs a single method would miss.</li>
-          <li><strong>Dashboard &amp; CI:</strong> A Streamlit dashboard for exploring results, backed by 35 automated tests running in CI.</li>
+        <ul>
+          <li>46 attack payloads spanning 4 categories and 41 techniques, run against both local and frontier models.</li>
+          <li>A dual scoring pipeline that combines deterministic rule-based checks with an LLM-as-judge.</li>
+          <li>A Streamlit dashboard for exploring results, backed by 35 automated tests in CI.</li>
         </ul>
+        <Media
+          items={[
+            {
+              src: '/projects/llm-red-teaming/heatmap.png',
+              alt: 'Heatmap of 46 attack payloads across 3 models, grouped by attack category',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: '46 payloads across 3 models, grouped by attack category',
+            },
+          ]}
+        />
 
-        <h2>Key Findings</h2>
+        <h2>What the runs showed</h2>
         <p>
-          The pipeline quantified a <strong>robustness gap of up to a 47% breakthrough rate on local 8B models versus near-zero on a frontier model</strong>—a stark, measurable difference in resilience. Through multi-model, repeated-trial experiments, it also surfaced non-obvious failure modes: <strong>prompt-hardening defenses that merely relocated vulnerabilities rather than removing them</strong>, and denylist filters that were defeated by trivial obfuscation. The takeaway: defenses that look effective in isolation can give a false sense of security until they&apos;re measured systematically.
+          In the three-model run (34 payloads each), rule-based scoring had 47% of attacks get through qwen2.5:7b (16 of 34) and 29% through llama3.1:8b, versus 3% on Claude Sonnet 5. The LLM judge scored the same runs lower (26%, 21% and 0%). Prompt hardening on llama3.1:8b only cut breakthroughs from 21% to 17%: each defense closed two or three attacks but opened one or two others, and two attacks got through all four configurations. Denylist filters were beaten by simple obfuscation.
         </p>
+        <Media
+          items={[
+            {
+              src: '/projects/llm-red-teaming/defenses.png',
+              alt: 'Chart of which attacks each prompt-hardening defense closed and opened on llama3.1:8b',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: 'Which attacks each prompt-hardening defense closed and opened, llama3.1:8b',
+            },
+          ]}
+        />
 
-        <div style={{ marginTop: '4rem', display: 'flex', gap: '1rem' }}>
-          <a href="https://github.com/NeelMaddu268/llm-redteam" target="_blank" rel="noopener noreferrer" className="btn-primary">
-            GitHub Code
-          </a>
-        </div>
-      </main>
+        <NextLink href="/projects/multimodal-search" title="Multimodal AI Search" />
+      </CaseStudyLayout>
     </>
   );
 }

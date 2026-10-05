@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import CaseStudyLayout from '@/components/CaseStudyLayout';
+import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
 
 export default function MultimodalSearch() {
   return (
@@ -8,56 +9,90 @@ export default function MultimodalSearch() {
         <title>Multimodal AI Search | Neel Maddu</title>
       </Head>
 
-      <nav style={{ padding: '1.5rem 0', background: 'var(--bg-color)', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container project-nav-row">
-          <Link href="/" style={{ fontWeight: 600, color: 'var(--text-muted)' }}>← Back to Portfolio</Link>
-          <div style={{ fontWeight: 800 }}>NM.</div>
-        </div>
-      </nav>
+      <CaseStudyLayout backHref="/#project-multimodal-search">
+        <CaseHero
+          title="Multimodal AI Search"
+          sub="Search 8,091 Flickr8k photos by describing them, showing an example image, or both."
+          facts={[
+            { label: 'Role', value: 'Solo project' },
+            { label: 'Status', value: 'Live on Hugging Face' },
+            { label: 'When', value: 'Rebuilt October 2026' },
+          ]}
+          links={[
+            { label: 'Live demo', href: 'https://nm268-multimodal-ai-search.hf.space' },
+            { label: 'GitHub', href: 'https://github.com/NeelMaddu268/multimodal-ai-search' },
+          ]}
+        />
 
-      <main className="article-container animate-fade-in delay-100">
-        <div style={{ marginBottom: '3rem' }}>
-          <span className="tech-badge">Python</span>
-          <span className="tech-badge">PyTorch</span>
-          <span className="tech-badge">CLIP</span>
-          <span className="tech-badge">FAISS</span>
-        </div>
+        <CaseStats
+          items={[
+            { value: '57.5%', caption: 'right photo ranked first' },
+            { value: '86.6%', caption: 'right photo in the top 10' },
+            { value: '+15.8 pts', caption: 'top-1 accuracy vs the first version' },
+            { value: '~0.3 s', caption: 'to the first result on the live app' },
+          ]}
+        />
 
-        <h1 className="text-gradient">Multimodal AI: Semantic Image Search</h1>
+        <Media
+          items={[
+            {
+              src: '/projects/multimodal-search/search-kayak.png',
+              alt: 'Search results for “a man in a yellow kayak on rough water”',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: '“a man in a yellow kayak on rough water”',
+            },
+            {
+              src: '/projects/multimodal-search/search-dogs-snow.png',
+              alt: 'Search results for “two dogs playing tug of war in the snow”',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: '“two dogs playing tug of war in the snow”',
+            },
+          ]}
+        />
+
+        <h2>How it works</h2>
         <p>
-          Bridging the gap between natural language prompts and massive visual datasets.
+          SigLIP 2 (ViT-B/16) embeds all 8,091 photos and their 40,437 captions once, offline. A text query gets two scores per photo, one against the pixels and one against the photo&apos;s best-matching caption. They live on very different scales, so each is z-scored across the collection and then blended 0.7 / 0.3, the weight with the best top-1 accuracy on half the benchmark.
+        </p>
+        <p>
+          Scoring is exact (one matrix-vector product), with no approximate index needed at this size. Image search encodes the upload with the same model, and &quot;More like this&quot; reuses a photo&apos;s stored vector. Thumbnails load straight from Hugging Face&apos;s CDN.
         </p>
 
-        <h2>The Problem</h2>
+        <h2>What the rebuild changed</h2>
         <p>
-          Traditional image search relies heavily on pre-computed metadata and manual tagging. This approach completely fails when users want to search for highly descriptive or abstract concepts.
+          The first version matched queries against captions only, using CLIP ViT-B/32 and FAISS, showed 5 results, and downloaded each image from Google Drive one at a time (about 6 s to show all five in a replay). The rebuild blends photo and caption scores with SigLIP 2. Top-1 accuracy went from 41.7% to 57.5%, about half from the blending and half from the model, and the first result now appears in about 0.3 s.
         </p>
 
-        <h2>Architecture & Implementation</h2>
+        <h2>How I measured it</h2>
         <p>
-          I designed a <strong>Multimodal Search Engine</strong> utilizing OpenAI&apos;s CLIP (Contrastive Language-Image Pretraining) model to encode both text queries and visual assets into the exact same semantic vector space.
+          Every Flickr8k caption is used as a query with that caption held out, and a hit means the photo it describes ranks in the top K. The blend weight was tuned on the even-numbered queries; results are from the 20,218 odd-numbered ones.
+        </p>
+        <p>
+          Caveat: caption-style queries favor the caption signal, so free-form queries were tested by example.
         </p>
 
-        <ul className="feature-list">
-          <li><strong>Data Ingestion:</strong> Over 10,000 images processed through a PyTorch data pipeline.</li>
-          <li><strong>Vector Storage:</strong> Utilized FAISS (Facebook AI Similarity Search) to index the high-dimensional embeddings for extremely rapid nearest-neighbor lookup.</li>
-          <li><strong>Frontend:</strong> A highly responsive Streamlit interface that actively updates an endless-scroll gallery as the user structures their prompt.</li>
+        <h2>Where it breaks</h2>
+        <ul>
+          <li>Counting holds up to about three.</li>
+          <li>&quot;No&quot;, word order and left/right are mostly ignored.</li>
+          <li>Queries over 64 tokens are cut off without warning.</li>
+          <li>It always fills every slot even when nothing matches (searching &quot;a giraffe&quot; returns mostly dogs).</li>
         </ul>
 
-        <h2>Challenges Overcome</h2>
-        <p>
-          The most significant hurdle was optimizing the loading speed of the FAISS index and the PyTorch model size. Loading the raw tensor models sequentially bottlenecked initialization. By heavily caching the embeddings and leveraging tensor-optimized hardware rendering on deployment, query times dropped significantly, maintaining an average retrieval pipeline of just two seconds per query.
-        </p>
+        <h2>What I&apos;d do next</h2>
+        <ul>
+          <li>Flag weak matches.</li>
+          <li>Warn when a query is truncated.</li>
+          <li>Collapse duplicate photos.</li>
+          <li>Score free-form queries with hand-labeled relevance.</li>
+        </ul>
 
-        <div style={{ marginTop: '4rem', display: 'flex', gap: '1rem' }}>
-          <a href="https://huggingface.co/spaces/NM268/Multimodal-ai-search/" target="_blank" rel="noopener noreferrer" className="btn-primary">
-            View Live Demo
-          </a>
-          <a href="https://github.com/NeelMaddu268/multimodal-ai-search" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-            GitHub Code
-          </a>
-        </div>
-      </main>
+        <NextLink href="/projects/jotdown" title="JotDown" />
+      </CaseStudyLayout>
     </>
   );
 }
