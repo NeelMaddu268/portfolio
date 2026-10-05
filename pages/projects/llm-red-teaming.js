@@ -29,7 +29,7 @@ export default function LLMRedTeaming() {
             { value: '47%', caption: 'qwen2.5:7b, local' },
             { value: '29%', caption: 'llama3.1:8b, local' },
             { value: '3%', caption: 'Claude Sonnet 5' },
-            { value: '46', caption: 'attack payloads' },
+            { value: '46', caption: 'payloads in the library' },
           ]}
         />
 
@@ -41,7 +41,7 @@ export default function LLMRedTeaming() {
               width: 1600,
               height: 1000,
               kind: 'wide',
-              cap: 'Breakthrough rate by model, rule-based scoring. anthropic-direct is Claude Sonnet 5.',
+              cap: 'Three-model run: 34 payloads per model, 102 runs. The 26% is all three models combined. anthropic-direct is Claude Sonnet 5.',
             },
           ]}
         />
@@ -75,7 +75,7 @@ export default function LLMRedTeaming() {
 
         <h2>What the runs showed</h2>
         <p>
-          With rule-based scoring, 47% of attacks got through qwen2.5:7b and 29% through llama3.1:8b, versus 3% on Claude Sonnet 5. The LLM judge scored the same runs lower (26%, 21% and 0%). Prompt hardening on llama3.1:8b only cut breakthroughs from 21% to 17%: each defense closed two or three attacks but opened one or two others, and two attacks got through all four configurations. Denylist filters were beaten by simple obfuscation.
+          In the three-model run (34 payloads each), rule-based scoring had 47% of attacks get through qwen2.5:7b (16 of 34) and 29% through llama3.1:8b, versus 3% on Claude Sonnet 5. The LLM judge scored the same runs lower (26%, 21% and 0%). Prompt hardening on llama3.1:8b only cut breakthroughs from 21% to 17%: each defense closed two or three attacks but opened one or two others, and two attacks got through all four configurations. Denylist filters were beaten by simple obfuscation.
         </p>
         <Media
           items={[

@@ -30,7 +30,7 @@ const experience = [
     org: 'Georgia Tech iOS Club',
     date: 'Aug 2025 – Present',
     slug: 'gt-ios-club',
-    summary: 'Co-lead the 20+ developer team building Contour.',
+    summary: 'Tech Lead since Aug 2026. Co-lead the 20+ developer team building Contour.',
   },
 ];
 
@@ -137,7 +137,7 @@ export default function Home() {
               <div className="tile stat">
                 <span className="tile-label">LLM Red-Teaming</span>
                 <span className="stat-value value-accent">47%</span>
-                <span className="stat-caption">breakthrough rate on local 7–8B models</span>
+                <span className="stat-caption">peak breakthrough rate on local 7–8B models</span>
               </div>
             </div>
           </div>

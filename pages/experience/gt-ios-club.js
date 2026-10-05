@@ -16,7 +16,7 @@ export default function GTIOSClub() {
           sub="I went from developer to Tech Lead across three iOS Club apps, and now co-lead the 20+ person team building Contour."
           facts={[
             { label: 'Team', value: 'Georgia Tech iOS Club' },
-            { label: 'Role', value: 'Tech Lead' },
+            { label: 'Role', value: 'Tech Lead since Aug 2026' },
             { label: 'When', value: 'Aug 2025 – Present' },
           ]}
         />
@@ -26,7 +26,7 @@ export default function GTIOSClub() {
             { value: '3', caption: 'apps across 3 semesters' },
             { value: '20+', caption: 'developers on Contour' },
             { value: '17', caption: 'pull requests authored' },
-            { value: '22', caption: 'pull requests merged' },
+            { value: '22', caption: 'pull requests reviewed and merged' },
           ]}
         />
 

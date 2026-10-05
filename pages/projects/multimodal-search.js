@@ -41,7 +41,7 @@ export default function MultimodalSearch() {
               width: 1600,
               height: 1000,
               kind: 'wide',
-              cap: '“a man in a yellow kayak on rough water”: 12 results in 40 ms',
+              cap: '“a man in a yellow kayak on rough water”',
             },
             {
               src: '/projects/multimodal-search/search-dogs-snow.png',

@@ -33,7 +33,7 @@ export const featuredProjects = [
     slug: 'hidden-quakes',
     label: 'ML · HackGT 13',
     title: 'Hidden Quakes',
-    summary: "Found 15x more earthquakes than the public catalog under Utah's FORGE geothermal site, in 36 hours.",
+    summary: "Found 15x more candidate earthquakes than the public catalog under Utah's FORGE geothermal site, in 36 hours.",
     tech: ['Python', 'PyTorch', 'PyOcto', 'ObsPy'],
     images: [
       {

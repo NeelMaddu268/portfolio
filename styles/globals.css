@@ -903,12 +903,24 @@ h1.hero-title {
     padding: 28px 16px 64px;
   }
 
-  .phone img {
-    height: 300px;
+  /* Phone screenshots: two columns side by side; scale to the column, never crop */
+  .phones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
+  .phone {
+    min-width: 0;
+    padding: 8px;
+    border-radius: 16px;
+    gap: 8px;
+  }
+
+  .phone img,
   .phone.hero-shot img {
-    height: 380px;
+    width: 100%;
+    height: auto;
   }
 
   .cstat-value {
