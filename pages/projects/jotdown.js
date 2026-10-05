@@ -1,18 +1,19 @@
-import Head from 'next/head';
+import Seo from '@/components/Seo';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
+
+const DESCRIPTION =
+  "A private, on-device AI notes app for iOS 26. Apple's on-device model files each note into your own categories and tags its emotion. Built by about 20 students in the Georgia Tech iOS Club, Fall 2025.";
 
 export default function JotDown() {
   return (
     <>
-      <Head>
-        <title>JotDown | Neel Maddu</title>
-      </Head>
+      <Seo title="JotDown | Neel Maddu" description={DESCRIPTION} />
 
       <CaseStudyLayout backHref="/#project-jotdown">
         <CaseHero
           title="JotDown"
-          sub="A private, on-device AI notes app for iOS 26. Apple's on-device model files each note into your own categories and tags its emotion. Built by about 20 students in the Georgia Tech iOS Club, Fall 2025."
+          sub={DESCRIPTION}
           facts={[
             { label: 'Role', value: 'iOS Developer, 6 merged PRs' },
             { label: 'Team', value: '~20 developers' },

@@ -1,18 +1,19 @@
-import Head from 'next/head';
+import Seo from '@/components/Seo';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
+
+const DESCRIPTION =
+  "A framework I built to measure how well language models resist prompt-injection attacks, and where their defenses quietly break down.";
 
 export default function LLMRedTeaming() {
   return (
     <>
-      <Head>
-        <title>LLM Red-Teaming Pipeline | Neel Maddu</title>
-      </Head>
+      <Seo title="LLM Red-Teaming Pipeline | Neel Maddu" description={DESCRIPTION} />
 
       <CaseStudyLayout backHref="/#project-llm-red-teaming">
         <CaseHero
           title="LLM Red-Teaming Pipeline"
-          sub="A framework I built to measure how well language models resist prompt-injection attacks, and where their defenses quietly break down."
+          sub={DESCRIPTION}
           facts={[
             { label: 'Role', value: 'Solo project' },
             { label: 'Scope', value: 'Prompt-injection evaluation' },

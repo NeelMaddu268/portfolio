@@ -1,19 +1,20 @@
-import Head from 'next/head';
+import Seo from '@/components/Seo';
 import Link from 'next/link';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import { CaseHero, CaseStats, NextLink } from '@/components/CaseStudy';
 
+const DESCRIPTION =
+  "I went from developer to Tech Lead across three iOS Club apps, and now co-lead the 20+ person team building Contour.";
+
 export default function GTIOSClub() {
   return (
     <>
-      <Head>
-        <title>Tech Lead, GT iOS Club | Neel Maddu</title>
-      </Head>
+      <Seo title="Tech Lead, GT iOS Club | Neel Maddu" description={DESCRIPTION} />
 
       <CaseStudyLayout backHref="/#exp-gt-ios-club">
         <CaseHero
           title="Tech Lead, GT iOS Club"
-          sub="I went from developer to Tech Lead across three iOS Club apps, and now co-lead the 20+ person team building Contour."
+          sub={DESCRIPTION}
           facts={[
             { label: 'Team', value: 'Georgia Tech iOS Club' },
             { label: 'Role', value: 'Tech Lead since Aug 2026' },
