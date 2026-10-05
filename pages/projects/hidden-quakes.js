@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
-import { CaseHero, CaseStats, NextLink } from '@/components/CaseStudy';
+import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
 
 export default function HiddenQuakes() {
   return (
@@ -30,7 +30,20 @@ export default function HiddenQuakes() {
             { value: '654', caption: 'candidate events found' },
             { value: '15x', caption: 'denser than the public catalog' },
             { value: '43/43', caption: 'catalogued events recovered' },
-            { value: '0.96', caption: 'held-out ROC AUC on the scramble test' },
+            { value: '0.96', caption: 'held-out ROC AUC on the scramble test at equal station count' },
+          ]}
+        />
+
+        <Media
+          items={[
+            {
+              src: '/projects/hidden-quakes/depth-wells.png',
+              alt: 'Candidate earthquakes plotted at depth beneath the Utah FORGE wells',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: 'Events at depth beneath the Utah FORGE wells',
+            },
           ]}
         />
 
@@ -55,6 +68,18 @@ export default function HiddenQuakes() {
         <p>
           The final run produced 654 candidate events against 43 in the public catalog for the same day and region, a 15x denser catalog, and recovered all 43 catalogued events. Of the candidates, 32 are strict-tier, 171 medium, and 451 loose, and 14 strict-tier events do not appear in the public catalog at all.
         </p>
+        <Media
+          items={[
+            {
+              src: '/projects/hidden-quakes/comparison.png',
+              alt: '654 candidate events compared with 43 public catalog events, by hour and confidence tier',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: '654 candidate events vs 43 public, by hour and tier',
+            },
+          ]}
+        />
 
         <h2>How I checked it</h2>
         <p>
@@ -66,6 +91,18 @@ export default function HiddenQuakes() {
           <li>Synthetic depth test: located 200 synthetic events with a median vertical error of 59 m.</li>
           <li>Baseline: a classic STA/LTA detector produced 4,120 candidates but none at the strict tier, while the PhaseNet pipeline produced 33 strict-tier events on the same rerun.</li>
         </ul>
+        <Media
+          items={[
+            {
+              src: '/projects/hidden-quakes/validation.png',
+              alt: 'Clock-scramble null test results and scramble classifier performance',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: 'Clock-scramble null test and scramble classifier',
+            },
+          ]}
+        />
 
         <h2>What got cut</h2>
         <p>

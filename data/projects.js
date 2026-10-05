@@ -35,6 +35,15 @@ export const featuredProjects = [
     title: 'Hidden Quakes',
     summary: "Found 15x more earthquakes than the public catalog under Utah's FORGE geothermal site, in 36 hours.",
     tech: ['Python', 'PyTorch', 'PyOcto', 'ObsPy'],
+    images: [
+      {
+        src: '/projects/hidden-quakes/hero.png',
+        alt: 'Hidden Quakes: 654 candidate events vs 43 in the public catalog',
+        width: 1600,
+        height: 1000,
+        kind: 'wide',
+      },
+    ],
   },
   {
     slug: 'llm-red-teaming',
@@ -42,6 +51,15 @@ export const featuredProjects = [
     title: 'LLM Red-Teaming Pipeline',
     summary: 'Measures how well local and frontier LLMs resist prompt injection across 46 attack payloads.',
     tech: ['Python', 'Streamlit', 'Ollama', 'Anthropic API'],
+    images: [
+      {
+        src: '/projects/llm-red-teaming/dashboard.png',
+        alt: 'Breakthrough rate by model, rule-based scoring',
+        width: 1600,
+        height: 1000,
+        kind: 'wide',
+      },
+    ],
   },
 ];
 
@@ -49,16 +67,13 @@ export const smallProjects = [
   {
     slug: 'multimodal-search',
     title: 'Multimodal AI Search',
-    description: 'Searches 10,000+ images in under 2s with CLIP and FAISS.',
+    description: 'Search 8,091 photos by text, image, or both with SigLIP 2. First result in about 0.3 s on a free Hugging Face Space.',
+    tech: 'Python · PyTorch · SigLIP 2 · Streamlit',
   },
   {
     slug: 'jotdown',
     title: 'JotDown',
-    description: 'SwiftUI notes with on-device semantic search.',
-  },
-  {
-    slug: 'asl-interpreter',
-    title: 'ASL Interpreter',
-    description: '95% accuracy on the static ASL alphabet, in real time.',
+    description: 'On-device AI notes app for iOS 26, built by a 20-person iOS Club team. I built its Siri read-back intents and cross-tab navigation.',
+    tech: 'SwiftUI · SwiftData · App Intents · Foundation Models',
   },
 ];

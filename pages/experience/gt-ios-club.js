@@ -32,9 +32,9 @@ export default function GTIOSClub() {
 
         <h2>Three apps, three semesters</h2>
         <ul>
-          <li>Fall 2025, JotDown: built SwiftUI features on a notes app with on-device semantic search, using MVVM and a PR-based Git workflow.</li>
-          <li>Spring 2026, SmartCompose: built the Slack API integration that lets users send and receive Slack messages inside the app, and taught the team how to keep API keys and secrets out of the repo.</li>
-          <li>Fall 2026, Contour: co-leading the whole project team with one other Tech Lead, and co-leading the Surface Understanding sub-team.</li>
+          <li>iOS Developer (Fall 2025), JotDown: built Siri read-back App Intents, cross-tab category navigation and the &apos;Other&apos; category in a 20-developer on-device AI notes app.</li>
+          <li>Senior iOS Developer (Spring 2026), SmartCompose: built the Slack API integration that lets users send and receive Slack messages inside the app, and taught the team how to keep API keys and secrets out of the repo.</li>
+          <li>Tech Lead (Fall 2026), Contour: co-leading the whole project team with one other Tech Lead, and co-leading the Surface Understanding sub-team.</li>
         </ul>
 
         <h2>Leading Contour</h2>

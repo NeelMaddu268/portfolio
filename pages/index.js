@@ -36,8 +36,8 @@ const experience = [
 
 const skills = {
   Languages: 'Python, Java, C, C++, JavaScript, Swift, SQL',
-  'ML & AI': 'PyTorch, TensorFlow, scikit-learn, FAISS, MediaPipe, NLP, LLM Evaluation, Graph Analytics',
-  'iOS Development': 'SwiftUI, Core ML, Vision, WidgetKit, MVVM',
+  'ML & AI': 'PyTorch, TensorFlow, scikit-learn, FAISS, NLP, LLM Evaluation, Graph Analytics',
+  'iOS Development': 'SwiftUI, SwiftData, App Intents, Core ML, Vision, WidgetKit, MVVM',
   'Frameworks & Libraries': 'FastAPI, Node.js, React, Next.js, Streamlit, pandas, NumPy',
   'Data & Infrastructure': 'MySQL, MongoDB, SQLite, Firebase, Docker, Git, GitHub Actions, Jenkins, CI/CD',
 };
@@ -137,7 +137,7 @@ export default function Home() {
               <div className="tile stat">
                 <span className="tile-label">LLM Red-Teaming</span>
                 <span className="stat-value value-accent">47%</span>
-                <span className="stat-caption">robustness gap on local 8B models</span>
+                <span className="stat-caption">breakthrough rate on local 7–8B models</span>
               </div>
             </div>
           </div>
@@ -195,16 +195,16 @@ export default function Home() {
                     {hasMedia && (
                       <div className="proj-feature-media">
                         {wides.map((w) => (
-                          // eslint-disable-next-line @next/next/no-img-element
                           <figure className="media-wide" key={w.src}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img src={w.src} alt={w.alt || ''} width={w.width} height={w.height} loading="lazy" />
                           </figure>
                         ))}
                         {phones.length > 0 && (
                           <div className="phones">
                             {phones.map((p) => (
-                              // eslint-disable-next-line @next/next/no-img-element
                               <figure className="phone" key={p.src}>
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img src={p.src} alt={p.alt || ''} width={p.width} height={p.height} loading="lazy" />
                               </figure>
                             ))}
@@ -229,6 +229,7 @@ export default function Home() {
                 >
                   <div className="proj-small-title">{proj.title} →</div>
                   <div className="proj-small-desc">{proj.description}</div>
+                  {proj.tech && <div className="proj-small-tech">{proj.tech}</div>}
                 </Link>
               ))}
             </div>

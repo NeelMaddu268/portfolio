@@ -44,6 +44,7 @@ export function CaseStats({ items = [] }) {
 
 // items: [{ src, alt, width, height, kind: 'phone' | 'wide', cap, hero }]
 // 'phone' images render in a centered phone frame; 'wide' images render as one 16:10 contain image.
+// Every image links to its full-size file.
 export function Media({ items = [], caption }) {
   if (items.length === 0) return null;
   const phones = items.filter((i) => (i.kind || 'phone') === 'phone');
@@ -51,9 +52,13 @@ export function Media({ items = [], caption }) {
   return (
     <div className="case-shots">
       {wides.map((w) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <figure className="media-wide" key={w.src}>
-          <img src={w.src} alt={w.alt || w.cap || ''} width={w.width} height={w.height} loading="lazy" />
+        <figure className="wide-figure" key={w.src}>
+          <div className="media-wide">
+            <a href={w.src} target="_blank" rel="noopener noreferrer">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={w.src} alt={w.alt || w.cap || ''} width={w.width} height={w.height} loading="lazy" />
+            </a>
+          </div>
           {w.cap && <figcaption className="media-cap">{w.cap}</figcaption>}
         </figure>
       ))}
@@ -61,8 +66,10 @@ export function Media({ items = [], caption }) {
         <div className="phones">
           {phones.map((p) => (
             <figure className={`phone${p.hero ? ' hero-shot' : ''}`} key={p.src}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={p.src} alt={p.alt || p.cap || ''} width={p.width} height={p.height} loading="lazy" />
+              <a href={p.src} target="_blank" rel="noopener noreferrer">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={p.src} alt={p.alt || p.cap || ''} width={p.width} height={p.height} loading="lazy" />
+              </a>
               {p.cap && <figcaption className="phone-cap">{p.cap}</figcaption>}
             </figure>
           ))}

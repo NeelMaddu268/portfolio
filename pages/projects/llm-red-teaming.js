@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import CaseStudyLayout from '@/components/CaseStudyLayout';
-import { CaseHero, CaseStats, NextLink } from '@/components/CaseStudy';
+import { CaseHero, CaseStats, Media, NextLink } from '@/components/CaseStudy';
 
 export default function LLMRedTeaming() {
   return (
@@ -18,15 +18,31 @@ export default function LLMRedTeaming() {
             { label: 'Scope', value: 'Prompt-injection evaluation' },
             { label: 'Tests', value: '35 in CI' },
           ]}
-          links={[{ label: 'GitHub', href: 'https://github.com/NeelMaddu268/llm-redteam' }]}
+          links={[
+            { label: 'Live demo', href: 'https://llm-redteam.streamlit.app' },
+            { label: 'GitHub', href: 'https://github.com/NeelMaddu268/llm-redteam' },
+          ]}
         />
 
         <CaseStats
           items={[
+            { value: '47%', caption: 'qwen2.5:7b, local' },
+            { value: '29%', caption: 'llama3.1:8b, local' },
+            { value: '3%', caption: 'Claude Sonnet 5' },
             { value: '46', caption: 'attack payloads' },
-            { value: '41', caption: 'distinct techniques' },
-            { value: '47%', caption: 'breakthrough on local 8B models' },
-            { value: '~0%', caption: 'breakthrough on a frontier model' },
+          ]}
+        />
+
+        <Media
+          items={[
+            {
+              src: '/projects/llm-red-teaming/dashboard.png',
+              alt: 'Dashboard showing breakthrough rate by model under rule-based scoring',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: 'Breakthrough rate by model, rule-based scoring. anthropic-direct is Claude Sonnet 5.',
+            },
           ]}
         />
 
@@ -44,11 +60,35 @@ export default function LLMRedTeaming() {
           <li>A dual scoring pipeline that combines deterministic rule-based checks with an LLM-as-judge.</li>
           <li>A Streamlit dashboard for exploring results, backed by 35 automated tests in CI.</li>
         </ul>
+        <Media
+          items={[
+            {
+              src: '/projects/llm-red-teaming/heatmap.png',
+              alt: 'Heatmap of 46 attack payloads across 3 models, grouped by attack category',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: '46 payloads across 3 models, grouped by attack category',
+            },
+          ]}
+        />
 
         <h2>What the runs showed</h2>
         <p>
-          The pipeline measured a robustness gap of up to a 47% breakthrough rate on local 8B models against near-zero on a frontier model. Repeated, multi-model runs also surfaced less obvious failure modes: prompt-hardening defenses that relocated vulnerabilities rather than removing them, and denylist filters defeated by trivial obfuscation. Defenses that look effective in isolation can give a false sense of security until they are measured directly.
+          With rule-based scoring, 47% of attacks got through qwen2.5:7b and 29% through llama3.1:8b, versus 3% on Claude Sonnet 5. The LLM judge scored the same runs lower (26%, 21% and 0%). Prompt hardening on llama3.1:8b only cut breakthroughs from 21% to 17%: each defense closed two or three attacks but opened one or two others, and two attacks got through all four configurations. Denylist filters were beaten by simple obfuscation.
         </p>
+        <Media
+          items={[
+            {
+              src: '/projects/llm-red-teaming/defenses.png',
+              alt: 'Chart of which attacks each prompt-hardening defense closed and opened on llama3.1:8b',
+              width: 1600,
+              height: 1000,
+              kind: 'wide',
+              cap: 'Which attacks each prompt-hardening defense closed and opened, llama3.1:8b',
+            },
+          ]}
+        />
 
         <NextLink href="/projects/multimodal-search" title="Multimodal AI Search" />
       </CaseStudyLayout>

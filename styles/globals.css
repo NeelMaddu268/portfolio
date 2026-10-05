@@ -537,6 +537,26 @@ h1.hero-title {
   display: block;
 }
 
+/* Case-study images link to the full-size file */
+.media-wide > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.phone > a {
+  display: block;
+}
+
+/* Wide image with its caption below (case studies) */
+.wide-figure {
+  margin: 0 0 20px;
+}
+
+.wide-figure .media-wide {
+  margin-bottom: 0;
+}
+
 /* ---------- Small projects ---------- */
 .proj-small {
   display: block;
@@ -565,6 +585,12 @@ h1.hero-title {
   color: var(--muted);
   margin-top: 8px;
   line-height: 1.5;
+}
+
+.proj-small-tech {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
 }
 
 /* ---------- Stack ---------- */
