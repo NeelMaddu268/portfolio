@@ -923,6 +923,13 @@ h1.hero-title {
     height: auto;
   }
 
+  /* An odd last phone (MARTA's fifth) sits centered at the width of one column */
+  .phones > .phone:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 5px);
+  }
+
   .cstat-value {
     font-size: 26px;
   }

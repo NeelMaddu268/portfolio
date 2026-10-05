@@ -26,7 +26,7 @@ export default function GTIOSClub() {
             { value: '3', caption: 'apps across 3 semesters' },
             { value: '20+', caption: 'developers on Contour' },
             { value: '17', caption: 'pull requests authored' },
-            { value: '22', caption: 'pull requests reviewed and merged' },
+            { value: '22', caption: 'pull requests I merged' },
           ]}
         />
 
