@@ -102,7 +102,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="tile hero-photo">
-                <Image src="/headshot.jpg" alt="Neel Maddu" fill priority sizes="(max-width: 600px) 100vw, 480px" />
+                <Image src="/neel-maddu-headshot.jpg" alt="Neel Maddu" fill priority sizes="(max-width: 600px) 100vw, 480px" />
               </div>
             </div>
 
