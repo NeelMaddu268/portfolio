@@ -226,8 +226,8 @@ main.wrap {
 
 .hero-photo img {
   object-fit: cover;
-  /* Headshot subject sits left of the frame's center; shift the crop so he's centered in the tile */
-  object-position: 36% center;
+  /* Subject is centered; anchor near the top so wide (tablet) tiles trim hair, never the chin */
+  object-position: 50% 25%;
 }
 
 .tile-label {
