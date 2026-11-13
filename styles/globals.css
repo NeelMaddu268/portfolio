@@ -639,6 +639,12 @@ h1.hero-title {
   gap: 16px;
 }
 
+.contact-emails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .contact-email {
   font-size: 18px;
   color: var(--muted);

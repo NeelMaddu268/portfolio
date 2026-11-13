@@ -252,7 +252,10 @@ export default function Home() {
             <h2 className="section-heading">Get in touch</h2>
             <div className="row">
               <div className="tile contact-tile">
-                <a href={EMAIL_HREF} className="contact-email">neelmaddu1@gmail.com</a>
+                <div className="contact-emails">
+                  <a href={EMAIL_HREF} className="contact-email">neelmaddu1@gmail.com</a>
+                  <a href="mailto:nmaddu3@gatech.edu" className="contact-email">nmaddu3@gatech.edu</a>
+                </div>
                 <a href={EMAIL_HREF} className="pill pill-accent">Email me</a>
               </div>
             </div>
