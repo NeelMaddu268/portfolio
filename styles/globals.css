@@ -357,11 +357,11 @@ h1.hero-title {
   border-top: none;
 }
 
-.exp-row:hover {
+a.exp-row:hover {
   background: var(--tile-2);
 }
 
-.exp-row:hover .exp-title {
+a.exp-row:hover .exp-title {
   color: var(--accent);
 }
 

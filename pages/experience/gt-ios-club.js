@@ -49,7 +49,7 @@ export default function GTIOSClub() {
           <li>Opened 12 of the repo&apos;s 29 issues to break work into lanes, and review and merge pull requests across the team.</li>
         </ul>
 
-        <NextLink href="/experience/gtri-cipher-lab" title="Software Engineer Intern" prefix="Next role" />
+        <NextLink href="/experience/gtpoker" title="Director of Technology" prefix="Next role" />
       </CaseStudyLayout>
     </>
   );
