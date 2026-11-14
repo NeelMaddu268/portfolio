@@ -12,6 +12,14 @@ const EMAIL_HREF = 'mailto:neelmaddu1@gmail.com';
 
 const experience = [
   {
+    role: 'Software Development Engineer Intern',
+    org: 'Amazon',
+    date: 'Jan 2027 – Apr 2027',
+    slug: 'amazon',
+    summary: "Incoming. Joining SCOT Fulfillment Optimization, the team behind the Tier 1 services that decide how orders flow through Amazon's fulfillment network.",
+    page: false,
+  },
+  {
     role: 'Software Engineer Intern',
     org: 'CIPHER Lab, GTRI',
     date: 'May 2026 – Present',
@@ -32,6 +40,13 @@ const experience = [
     slug: 'gt-ios-club',
     summary: 'Tech Lead since Aug 2026. Co-lead the 20+ developer team building Contour.',
   },
+  {
+    role: 'Director of Technology',
+    org: 'GTPoker',
+    date: 'Oct 2026 – Present',
+    slug: 'gtpoker',
+    summary: "Lead GTAlgoPoker, the club's Hold'em bot league, rebuilt on S3, CloudFront, Lambda and Aurora.",
+  },
 ];
 
 const skills = {
@@ -39,7 +54,7 @@ const skills = {
   'ML & AI': 'PyTorch, TensorFlow, scikit-learn, FAISS, NLP, LLM Evaluation, Graph Analytics',
   'iOS Development': 'SwiftUI, SwiftData, App Intents, Core ML, Vision, WidgetKit, MVVM',
   'Frameworks & Libraries': 'FastAPI, Node.js, React, Next.js, Streamlit, pandas, NumPy',
-  'Data & Infrastructure': 'MySQL, MongoDB, SQLite, Firebase, Docker, Git, GitHub Actions, Jenkins, CI/CD',
+  'Data & Infrastructure': 'AWS (S3, CloudFront, Lambda, Aurora, Fargate), MySQL, MongoDB, SQLite, Firebase, Docker, Git, GitHub Actions, Jenkins, CI/CD',
 };
 
 const markFromHome = () => {
@@ -92,7 +107,7 @@ export default function Home() {
                 <span className="tile-label">Software Engineer · CS @ Georgia Tech</span>
                 <h1 className="hero-title">I build AI security tools and iOS apps.</h1>
                 <p className="hero-body">
-                  Software engineer intern at GTRI&apos;s CIPHER Lab, evaluating agentic LLMs against adversarial attacks. Tech Lead of the 20+ person iOS Club team building Contour.
+                  Incoming SDE intern at Amazon. Software engineer intern at GTRI&apos;s CIPHER Lab, evaluating agentic LLMs against adversarial attacks. Tech Lead of the 20+ person iOS Club team building Contour.
                 </p>
                 <div className="hero-actions">
                   <a href={RESUME_HREF} target="_blank" rel="noopener noreferrer" className="pill pill-accent">Download resume</a>
@@ -144,7 +159,15 @@ export default function Home() {
             <h2 className="section-heading">Experience</h2>
             <div className="row">
               <div className="tile exp-tile">
-                {experience.map((exp) => (
+                {experience.map((exp) => exp.page === false ? (
+                  <div key={exp.slug} id={`exp-${exp.slug}`} className="exp-row">
+                    <div className="exp-head">
+                      <div className="exp-title">{exp.role} <span className="exp-org">· {exp.org}</span></div>
+                      <div className="exp-date">{exp.date}</div>
+                    </div>
+                    <div className="exp-line">{exp.summary}</div>
+                  </div>
+                ) : (
                   <Link
                     key={exp.slug}
                     id={`exp-${exp.slug}`}
