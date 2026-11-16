@@ -16,8 +16,9 @@ const experience = [
     org: 'Amazon',
     date: 'Jan 2027 – Apr 2027',
     slug: 'amazon',
-    summary: "Incoming. Joining SCOT Fulfillment Optimization, the team behind the Tier 1 services that decide how orders flow through Amazon's fulfillment network.",
+    summary: "Joining SCOT Fulfillment Optimization, the team behind the Tier 1 services that decide how orders flow through Amazon's fulfillment network.",
     page: false,
+    badge: 'Incoming',
   },
   {
     role: 'Software Engineer Intern',
@@ -104,10 +105,10 @@ export default function Home() {
           <div className="section">
             <div className="row">
               <div className="tile hero-intro">
-                <span className="tile-label">Software Engineer · CS @ Georgia Tech</span>
+                <span className="tile-label"><span className="label-accent">Incoming SDE Intern at Amazon</span> · CS @ Georgia Tech</span>
                 <h1 className="hero-title">I build AI security tools and iOS apps.</h1>
                 <p className="hero-body">
-                  Incoming SDE intern at Amazon. Software engineer intern at GTRI&apos;s CIPHER Lab, evaluating agentic LLMs against adversarial attacks. Tech Lead of the 20+ person iOS Club team building Contour.
+                  Software engineer intern at GTRI&apos;s CIPHER Lab, evaluating agentic LLMs against adversarial attacks. Tech Lead of the 20+ person iOS Club team building Contour.
                 </p>
                 <div className="hero-actions">
                   <a href={RESUME_HREF} target="_blank" rel="noopener noreferrer" className="pill pill-accent">Download resume</a>
@@ -123,6 +124,11 @@ export default function Home() {
 
             <div className="row stats-row">
               <div className="tile stat stat-accent">
+                <span className="tile-label">Incoming SDE Intern</span>
+                <span className="stat-value stat-word">Amazon</span>
+                <span className="stat-caption">Jan – Apr 2027 · Supply Chain Optimization Technologies</span>
+              </div>
+              <div className="tile stat">
                 <span className="tile-label">Georgia Tech · B.S. Computer Science</span>
                 <span className="stat-value">4.0</span>
                 <span className="stat-caption">GPA · graduating Dec 2027</span>
@@ -146,11 +152,6 @@ export default function Home() {
                 </div>
                 <span className="stat-caption">events found vs the public catalog</span>
               </div>
-              <div className="tile stat">
-                <span className="tile-label">LLM Red-Teaming</span>
-                <span className="stat-value value-accent">47%</span>
-                <span className="stat-caption">peak breakthrough rate on local 7–8B models</span>
-              </div>
             </div>
           </div>
 
@@ -162,7 +163,10 @@ export default function Home() {
                 {experience.map((exp) => exp.page === false ? (
                   <div key={exp.slug} id={`exp-${exp.slug}`} className="exp-row">
                     <div className="exp-head">
-                      <div className="exp-title">{exp.role} <span className="exp-org">· {exp.org}</span></div>
+                      <div className="exp-title">
+                        {exp.role} <span className="exp-org">· {exp.org}</span>
+                        {exp.badge && <span className="exp-badge">{exp.badge}</span>}
+                      </div>
                       <div className="exp-date">{exp.date}</div>
                     </div>
                     <div className="exp-line">{exp.summary}</div>
