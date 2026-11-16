@@ -236,6 +236,11 @@ main.wrap {
   color: var(--muted);
 }
 
+.label-accent {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 h1.hero-title {
   font-size: clamp(38px, 4.6vw, 62px);
   font-weight: 600;
@@ -291,6 +296,12 @@ h1.hero-title {
 
 .stat-accent .stat-value {
   color: var(--on-accent);
+}
+
+/* A word (not a number) in the value slot: slightly smaller so it fits the tile */
+.stat-word {
+  font-size: 52px;
+  white-space: nowrap;
 }
 
 .value-accent {
@@ -382,6 +393,18 @@ a.exp-row:hover .exp-title {
 .exp-org {
   color: var(--muted);
   font-weight: 400;
+}
+
+.exp-badge {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 3px 10px;
+  border-radius: 980px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 12px;
+  font-weight: 600;
+  vertical-align: 3px;
 }
 
 .exp-date {
@@ -887,6 +910,10 @@ a.exp-row:hover .exp-title {
 
   .stats-row .stat-value {
     font-size: 40px;
+  }
+
+  .stats-row .stat-word {
+    font-size: 32px;
   }
 
   .proj-feature {
